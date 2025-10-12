@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    style.
+      .input {
+        width: 250px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .error {
+        width: 500px;
+        padding: 0.3rem 0.6rem;
+        margin-top: 0.5rem;
+
+        color: crimson;
+        font-family: sans-serif;
+        font-size: 0.9rem;
+        line-break: anywhere;
+
+        border: thin solid lightcoral;
+        border-radius: 4px;
+        background-color: mistyrose;
+      }
+
+    title Chapter 9 - Token Authentication
+  body
+    h1 CORS Testing for Token Authentication
+
+    h2 Signup
+    form(onsubmit="signup(event)")
+      label.input.
+        Email #[input(name="email")]
+      label.input.
+        Password #[input(name="password", type="password")]
+      label.input.
+        Name #[input(name="name")]
+      button(type="submit") Submit
+
+      .error(hidden)
+
+    h2 Login
+    form(onsubmit="login(event)")
+      label.input.
+        Email #[input(name="email")]
+      label.input.
+        Password #[input(name="password", type="password")]
+      button(type="submit") Submit
+
+      .error(hidden)
+
+    h2 Edit Profile
+    form(onsubmit="edit(event)")
+      label.input.
+        Token #[input(name="token")]
+      label.input.
+        Name #[input(name="name")]
+      button(type="submit") Submit
+
+      .error(hidden)
+
+    script.
+      const API = 'http://localhost:3000'
+
+      async function signup(e) {
+        const { email, password, name } = e.target
+        const error = e.target.querySelector('.error')
+
+        e.preventDefault()
+
+        try {
+          const response = await fetch(`${API}/auth/signup`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: email.value,
+              password: password.value,
+              name: name.value
+            })
+          })
+
+          const result = await response.json()
+
+          if (result.type === 'error') {
+            error.hidden = false
+            error.textContent = result.payload.message
+
+            return
+          }
+
+          error.hidden = true
+          error.textContent = ''
+
+          Array.from(e.target.elements).forEach(elem => {
+            elem.value = ''
+          })
+        } catch (err) {
+          error.hidden = false
+          error.textContent = err.message
+        }
+      }
+
+      async function login(e) {
+        const { email, password } = e.target
+        const error = e.target.querySelector('.error')
+
+        e.preventDefault()
+
+        try {
+          const response = await fetch(`${API}/auth/login`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email.value, password: password.value })
+          })
+
+          const result = await response.json()
+
+          error.hidden = false
+          error.textContent = result.type === 'error'
+            ? result.payload.message
+            : result.payload.token
+
+          Array.from(e.target.elements).forEach(elem => {
+            elem.value = result.type === 'error' ? elem.value : ''
+          })
+        } catch (err) {
+          error.hidden = false
+          error.textContent = err.message
+        }
+      }
+
+      async function edit(e) {
+        const { token, name } = e.target
+        const error = e.target.querySelector('.error')
+
+        e.preventDefault()
+
+        try {
+          const response = await fetch(`${API}/user/edit`, {
+            method: 'PATCH',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token.value}`
+            },
+            body: JSON.stringify({ name: name.value })
+          })
+
+          const result = await response.json()
+
+          error.hidden = false
+          error.textContent = result.payload.message
+
+          if (result.type === 'error') return
+        } catch (err) {
+          error.hidden = false
+          error.textContent = err.message
+        }
+      }

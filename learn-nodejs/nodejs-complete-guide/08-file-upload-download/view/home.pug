@@ -1,0 +1,8 @@
+extends template/main.pug
+
+block content
+  if authenticated
+    div(style={ 'margin-bottom': '.3rem' }) Welcome #{user.name}!
+    img.avatar(src=user.avatar, alt="user_avatar")
+  else
+    | You're not logged in.

@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": false,
+    "strict": true,
+    "target": "es6",
+    "module": "CommonJS",
+    "lib": ["esnext"],
+    "baseUrl": ".",
+    "paths": {
+      "@config/*": ["config/*"],
+      "@graphql/*": ["graphql/*"],
+      "@lib/*": ["lib/*"],
+      "@model/*": ["model/*"]
+    }
+  },
+  "ts-node": {
+    "files": true,
+    "transpileOnly": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules", "**/*.{spec,test}.ts"]
+}

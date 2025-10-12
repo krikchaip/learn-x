@@ -1,0 +1,25 @@
+extends ../templates/main.pug
+
+append stylesheets
+  link(rel="stylesheet", href="/css/product.css")
+
+block content
+  main
+    if prods.length > 0
+      .grid
+        for p of prods
+          article.card.product-item
+            header.card__header
+              h1.product__title= p.title
+            .card__image
+              img(src=p.imageUrl, alt=p.title)
+            .card__content
+              h2.product__price= Number(p.price).toLocaleString()
+              p.product__description= p.description
+            .card__actions
+              a.btn(href="/admin/edit-product/" + p.id + "?from=user") Edit
+              form(action="/admin/delete-product/" + p.id, method="post")
+                input(type="hidden", name="from", value="user")
+                button.btn(type="submit") Delete
+    else
+      h1 No Products Found!

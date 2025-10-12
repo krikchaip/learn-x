@@ -1,0 +1,27 @@
+extends ../template/main.pug
+
+block content
+  form.form(action=`/auth/signup?_csrf=${_csrf}`, method="post", enctype="multipart/form-data")
+    label.textbox.
+      Email #[input(name="email", value=email)]
+    label.textbox.
+      Password #[input(name="password", type="password", value=password)]
+    label.textbox.
+      Confirm Password #[input(name="confirm_password", type="password", value=confirm_password)]
+    label.textbox.
+      First name #[input(name="firstname", value=firstname)]
+    label.textbox.
+      Last name #[input(name="lastname", value=lastname)]
+    label.textbox.
+      Age #[input(name="age", type="number", value=age)]
+    label.textbox
+      | Sex
+      |
+      select(name="sex")
+        option(value="") -- Choose Below --
+        option(value="male" selected=(age === 'male')) male
+        option(value="female", selected=(age === 'female')) female
+    label.textbox.
+      Avatar #[input(name="avatar", type="file")]
+
+    button(type="submit") Submit

@@ -1,0 +1,21 @@
+extends template/main.pug
+
+block content
+  form.form(action="/edit-profile", method="post")
+    label.textbox.
+      First name #[input(disabled, value=user.firstname)]
+    label.textbox.
+      Last name #[input(disabled, value=user.lastname)]
+    label.textbox.
+      Age #[input(name="age", type="number", value=user.age)]
+    label.textbox
+      | Sex
+      |
+      select(name="sex")
+        option(value="") -- Choose Below --
+        option(value="male", selected=(user.sex === 'male')) male
+        option(value="female", selected=(user.sex === 'female')) female
+    label.textbox.
+      Bio #[textarea(name="bio", rows="5", placeholder="Write something...")= user.bio]
+
+    button(type="submit") Submit

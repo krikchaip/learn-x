@@ -1,0 +1,9 @@
+extends template/main.pug
+
+block content
+  if authenticated
+    | Welcome #{user.name}!
+    br
+    | Your bio is "#{user.bio}"
+  else
+    | You're not logged in.

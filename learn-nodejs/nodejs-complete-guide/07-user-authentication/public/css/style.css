@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+}
+
+.page {
+  width: 1024px;
+  height: fit-content;
+  padding: 1rem;
+  margin-top: 5vh;
+
+  border: thin solid #ccc;
+  border-radius: 4px;
+
+  box-shadow: 4px 4px 8px rgba(204, 204, 204, 0.7);
+}
+
+.menus {
+  margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.menus * {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  text-decoration: none !important;
+}
+
+.form > *:not(:last-child) {
+  margin-bottom: 0.2rem;
+}
+
+.form [type='submit'] {
+  padding: 0.12rem 0.4rem;
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 150px;
+  resize: none;
+}
+
+.form textarea {
+  padding: 0.15rem;
+  letter-spacing: -0.5px;
+}
+
+.textbox {
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.error {
+  width: 40%;
+  padding: 0.3rem 0.6rem;
+  margin-top: 0.5rem;
+
+  color: crimson;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+
+  border: thin solid lightcoral;
+  border-radius: 4px;
+  background-color: mistyrose;
+}

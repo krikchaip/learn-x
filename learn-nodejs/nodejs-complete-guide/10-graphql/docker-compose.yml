@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  db:
+    container_name: db
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: 10-graphql
+    volumes:
+      - /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    tty: true
+
+  server:
+    depends_on:
+      - db
+    container_name: server
+    image: node:14.9-alpine
+    working_dir: /server
+    volumes:
+      - .:/server
+    ports:
+      - 3000:3000
+      - 5001:5001
+    tty: true
+    command: ['/bin/sh', '-c', 'yarn && yarn dev']
+
+  test:
+    container_name: test
+    image: node:14.9-alpine
+    working_dir: /test
+    volumes:
+      - .:/test
+    stdin_open: true
+    tty: true
+    command: ['yarn', 'test']

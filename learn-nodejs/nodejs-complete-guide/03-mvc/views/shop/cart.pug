@@ -1,0 +1,14 @@
+extends ../templates/main.pug
+
+block content
+  main
+    if products.length > 0
+      ul(style={ 'margin-left': '1rem' })
+        for p in products
+          li
+            p= `${p.productData.title} (${p.qty})`
+            form(action="/cart-delete-item", method="post")
+              input(type="hidden", name="productId", value= p.productData.id)
+              button.btn(type="submit") Delete
+    else
+      h1 No Products in Cart!

@@ -1,0 +1,9 @@
+extends template/main.pug
+
+block content
+  form.form(action="/login", method="post")
+    label.textbox.
+      First name #[input(name="firstname")]
+    label.textbox.
+      Last name #[input(name="lastname")]
+    button(type="submit") Enter

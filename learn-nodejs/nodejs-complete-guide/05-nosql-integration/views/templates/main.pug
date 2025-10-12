@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    block stylesheets
+      link(rel="stylesheet", href="/css/main.css")
+
+    title #{title || 'Untitled'}
+  body
+    block navigation
+      -
+        const links = [
+          { path: '/', label: 'Shop' },
+          { path: '/products', label: 'Products' },
+          { path: '/cart', label: 'Cart' },
+          { path: '/admin/add-product', label: 'Add Product' },
+          { path: '/admin/products', label: 'Admin Products' },
+        ];
+
+      .backdrop
+      header.main-header
+        button#side-menu-toggle Menu
+        nav.main-header__nav
+          ul.main-header__item-list
+            each url in links
+              li.main-header__item
+                a(class={ active: path === url.path }, href=url.path)= url.label
+      nav.mobile-nav
+        ul.mobile-nav__item-list
+          each url in links
+            li.mobile-nav__item
+              a(class={ active: path === url.path }, href=url.path)= url.label
+
+    block content
+
+    block end
+      script(src="/js/main.js")

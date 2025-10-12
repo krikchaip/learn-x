@@ -1,0 +1,13 @@
+extends ../template/main.pug
+
+block content
+  form.form(action="/auth/login", method="post")
+    input(type="hidden", name="_csrf", value=_csrf)
+    label.textbox.
+      Email #[input(name="email", type="email", required)]
+    label.textbox.
+      Password #[input(name="password", type="password", required)]
+    .textbox
+      button(type="submit") Enter
+      a(href="/signup") Signup
+      a(href="/forget-password") Forget Password

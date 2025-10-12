@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Template Engines #{title}
+  body
+    h1.some-class Hello World
+
+    p Welcome #{name}!!
+
+    ul
+      each u in users
+        li #{u}
+
+    if true
+      | Always Evaluate
+    else
+      | Impossible

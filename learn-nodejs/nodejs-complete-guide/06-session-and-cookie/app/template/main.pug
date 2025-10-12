@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+
+    link(rel="stylesheet", href="/css/style.css")
+
+    title Chapter 6 - Session and Cookie
+  body
+    .app
+      .page
+        .menus
+          a(href="/") Homepage
+
+          if authenticated
+            a(href="/edit-profile") Edit Profile
+            a(href="/logout") Logout
+          else
+            a(href="/login") Login
+
+        block content

@@ -1,0 +1,18 @@
+extends ../templates/main.pug
+
+append stylesheets
+  link(rel="stylesheet", href="/css/cart.css")
+
+block content
+  main
+    if products.length > 0
+      ul.cart__item-list(style={ 'margin-left': '1rem' })
+        for p in products
+          li.cart__item
+            h1= p.productData.title
+            h2= 'Quantity: ' + p.qty
+            form(action="/cart-delete-item", method="post")
+              input(type="hidden", name="productId", value= p.productData.id)
+              button.btn.danger(type="submit") Delete
+    else
+      h1 No Products in Cart!
