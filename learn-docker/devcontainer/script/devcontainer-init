@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -eo pipefail
+
+# Update node_modules owner to some user other than root.
+# ref: https://code.visualstudio.com/remote/advancedcontainers/improve-performance
+sudo chown "$(whoami)" node_modules
+
+pnpm config -g set store-dir "$HOME/.pnpm/.pnpm-store"

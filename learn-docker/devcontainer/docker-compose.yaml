@@ -1,0 +1,31 @@
+services:
+  redis-server:
+    image: redis:7-alpine
+    container_name: redis-server
+    volumes:
+      - redis_data:/data
+    expose:
+      - 6379
+    tty: true
+
+  node-app:
+    depends_on:
+      - redis-server
+    build:
+      context: .
+      dockerfile: build/Dockerfile.dev
+    container_name: node-app
+    working_dir: /docker-kubernetes-course
+    volumes:
+      - node_modules:/docker-kubernetes-course/node_modules
+      - .:/docker-kubernetes-course
+    ports:
+      - 4001:4001
+    environment:
+      - PORT=4001
+      - REDIS_URL=redis://redis-server:6379
+    tty: true
+
+volumes:
+  redis_data:
+  node_modules:

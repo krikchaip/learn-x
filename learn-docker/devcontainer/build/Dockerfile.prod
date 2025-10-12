@@ -1,0 +1,43 @@
+FROM node:18-alpine as base
+
+ENV PNPM_STORE="/.pnpm/.pnpm-store"
+ENV OMIT_PATTERN="cross-device link not permitted\|Falling back to copying packages from store"
+
+RUN npm install -g pnpm@7.27 && \
+  pnpm config -g set store-dir "$PNPM_STORE"
+
+FROM base as build
+WORKDIR /build
+
+# ignore `pnpm install` cross-device link warnings
+# ref: https://github.com/pnpm/pnpm/issues/3114
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm-store,target="$PNPM_STORE" \
+  pnpm install --frozen-lockfile | grep -v "$OMIT_PATTERN"
+
+COPY . .
+RUN pnpm build
+
+FROM base as deps
+WORKDIR /deps
+
+COPY package.json pnpm-lock.yaml ./
+RUN --mount=type=cache,id=pnpm-store,target="$PNPM_STORE" \
+  pnpm install --frozen-lockfile --prod | grep -v "$OMIT_PATTERN"
+
+FROM alpine as runtime
+
+# install nodejs binary
+COPY --from=base /usr/lib /usr/lib
+COPY --from=base /usr/local/bin/node /usr/local/bin/node
+
+# add a non-root user (node) for runtime environment
+RUN adduser -u 1000 -g '' -h /home/node -s /bin/sh -D node
+USER node
+
+WORKDIR /home/node/app
+
+COPY --from=build --chown=node:node /build/dist dist
+COPY --from=deps --chown=node:node /deps/node_modules node_modules
+
+ENTRYPOINT ["node", "dist/server.mjs"]

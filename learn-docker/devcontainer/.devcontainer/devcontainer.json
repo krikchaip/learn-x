@@ -1,0 +1,44 @@
+{
+  "name": "docker-kubernetes-course",
+
+  "dockerComposeFile": ["../docker-compose.yaml"],
+  "service": "node-app",
+  "shutdownAction": "stopCompose",
+
+  "forwardPorts": [],
+  "workspaceFolder": "/docker-kubernetes-course",
+  "onCreateCommand": "script/devcontainer-init",
+  "postStartCommand": "pnpm install",
+
+  "features": {
+    // "ghcr.io/devcontainers/features/common-utils:2": {
+    //   "configureZshAsDefaultShell": "true"
+    // }
+  },
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bmuskalla.vscode-tldr",
+        "chrmarti.regex",
+        "eamodio.gitlens",
+        "esbenp.prettier-vscode",
+        "ExodiusStudios.comment-anchors",
+        "felipe.nasc-touchbar",
+        "foxundermoon.shell-format",
+        "github.vscode-github-actions",
+        "GitHub.vscode-pull-request-github",
+        "kisstkondoros.vscode-codemetrics",
+        "mgmcdermott.vscode-language-babel",
+        "ms-azuretools.vscode-docker",
+        "redhat.vscode-yaml",
+        "richie5um2.vscode-sort-json",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "zengxingxin.sort-js-object-keys",
+        "ZixuanChen.vitest-explorer"
+      ],
+      "settings": {}
+    }
+  }
+}

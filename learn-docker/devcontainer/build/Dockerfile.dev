@@ -1,0 +1,21 @@
+FROM node:18-alpine as node
+
+FROM mcr.microsoft.com/devcontainers/base:alpine
+
+# Installing a specific nodejs version on alpine linux
+# P.S. only the first two lines should be enough for building production image
+# ref: https://medium.com/geekculture/how-to-install-a-specific-node-js-version-in-an-alpine-docker-image-3edc1c2c64be
+COPY --from=node /usr/lib /usr/lib
+COPY --from=node /usr/local/bin /usr/local/bin
+COPY --from=node /usr/local/include /usr/local/include
+COPY --from=node /usr/local/lib /usr/local/lib
+COPY --from=node /usr/local/share /usr/local/share
+
+# Fixing chsh always asking for a password
+# ref: https://askubuntu.com/questions/812420/chsh-always-asking-a-password-and-get-pam-authentication-failure
+RUN echo "auth sufficient pam_shells.so" > /etc/pam.d/chsh && \
+  chsh --shell /bin/zsh vscode
+
+RUN apk update && \
+  apk add shellcheck && \
+  npm install -g pnpm@7.27
