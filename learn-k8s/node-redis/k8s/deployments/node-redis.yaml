@@ -1,0 +1,62 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: node-redis
+
+spec:
+  selector:
+    matchLabels:
+      app: node-redis
+  template:
+    metadata:
+      labels:
+        app: node-redis
+    spec:
+      containers:
+      - name: node-redis
+        image: docker.io/apps/node-redis
+        imagePullPolicy: Never # to ensure that minikube uses a local image
+        ports:
+        - name: node-redis
+          containerPort: 5000
+        env:
+        - name: PORT
+          value: "5000"
+        - name: REDIS_URL
+          valueFrom:
+            secretKeyRef:
+              name: database
+              key: redis_url
+
+---
+
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: node-redis
+
+spec:
+  selector:
+    app: node-redis
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: node-redis
+---
+
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: node-redis-external
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: node-redis
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: node-redis

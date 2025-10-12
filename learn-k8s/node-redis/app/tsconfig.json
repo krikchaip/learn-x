@@ -1,0 +1,23 @@
+{
+  "typeAcquisition": { "enable": true },
+  "compilerOptions": {
+    "allowJs": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "pretty": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "nodenext",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./src/*.ts"]
+    }
+  },
+  "include": ["src"]
+}
