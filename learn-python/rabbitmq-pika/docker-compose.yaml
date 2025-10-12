@@ -1,0 +1,15 @@
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    hostname: rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: ${USERNAME:-admin}
+      RABBITMQ_DEFAULT_PASS: ${PASSWORD:-password}
+    ports:
+    - ${DAEMON_PORT:-5672}:5672
+    - ${MANAGEMENT_PORT:-15672}:15672
+    volumes:
+    - rabbitmq:/var/lib/rabbitmq
+
+volumes:
+  rabbitmq:
