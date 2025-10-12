@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for item in *.go; do
+  if [[ "${item}" == "*.go" ]]; then
+    echo "pattern \"*.go\" not found."
+    break
+  fi
+
+  name=${item%.go}
+  echo "folder \"$name\" has been created!"
+  mkdir "$name"
+  mv "$name.go" "./$name/main.go"
+done

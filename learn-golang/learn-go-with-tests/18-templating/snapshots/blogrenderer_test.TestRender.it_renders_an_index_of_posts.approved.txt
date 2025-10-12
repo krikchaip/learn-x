@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      lang="en"
+      content="Wow, like and subscribe, it really helps the channel guys"
+    />
+    <title>My amazing blog!</title>
+  </head>
+  <body>
+    <nav role="navigation">
+      <div>
+        <h1>Budding Gopher's blog</h1>
+        <ul>
+          <li><a href="/">home</a></li>
+          <li><a href="about">about</a></li>
+          <li><a href="archive">archive</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <ol>
+        <li><a href="/post/hello-world">Hello World</a></li><li><a href="/post/hello-world-2">Hello World 2</a></li>
+      </ol>
+    </main>
+    <footer>
+      <ul>
+        <li><a href="https://twitter.com/quii">Twitter</a></li>
+        <li><a href="https://github.com/quii">Github</a></li>
+      </ul>
+    </footer>
+  </body>
+</html>

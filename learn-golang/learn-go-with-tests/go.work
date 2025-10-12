@@ -1,0 +1,29 @@
+go 1.23.4
+
+use (
+	./01-hello
+	./02-integers
+	./03-iteration
+	./04-arrays-slices
+	./05-structs-methods-interfaces
+	./06-pointers-errors
+	./07-maps
+	./08-dependency-injection
+	./09-mocking
+	./10-concurrency
+	./11-select
+	./12-reflection
+	./13-sync
+	./14-context
+	./15-property-based-tests
+	./16-maths
+	./17-reading-files
+	./18-templating
+	./19-generics
+	./20-generic-arrays-slices
+	./21-acceptance-testing
+	./22-building-application
+	./23-os-exec
+	./24-error-types
+	./25-context-reader
+)
