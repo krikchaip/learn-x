@@ -1,0 +1,11 @@
+.DS_Store
+.elixir_ls/
+*.beam
+*.ez
+/_build
+/.fetch
+/config/*.secret.exs
+/cover
+/deps
+/doc
+erl_crash.dump
