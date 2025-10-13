@@ -1,0 +1,32 @@
+{
+  "name": "fullstack-tutorial",
+  "description": "Fullstack React GraphQL TypeScript",
+  "license": "MIT",
+  "engines": {
+    "node": "^14.17.0"
+  },
+  "private": true,
+  "workspaces": [
+    "server"
+  ],
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --ignore-path .gitignore --write",
+    "lint": "eslint --ignore-path .gitignore --ext .ts,.tsx"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,md,json}": "yarn format",
+    "**/*.{ts,tsx}": "yarn lint"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.3.1",
+    "typescript": "^4.3.2"
+  }
+}

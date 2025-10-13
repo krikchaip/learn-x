@@ -1,0 +1,4 @@
+entity: Post
+items:
+  post{1..10}:
+    title: '{{lorem.sentence}}'

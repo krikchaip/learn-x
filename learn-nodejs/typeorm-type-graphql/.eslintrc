@@ -1,0 +1,30 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "ignorePatterns": ["**/*.js"],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": [
+      "error",
+      {
+        "minimumDescriptionLength": 10,
+        "ts-ignore": "allow-with-description"
+      }
+    ],
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^of$",
+        "ignoreRestSiblings": true
+      }
+    ],
+    "@typescript-eslint/no-var-requires": "off",
+    "no-console": "error"
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "name": "@fullstack-tutorial/server",
+  "description": "Apollo GraphQL server",
+  "license": "MIT",
+  "engines": {
+    "node": "^14.17.0"
+  },
+  "version": "0.0.1",
+  "scripts": {
+    "predev": "rm -rf .cache",
+    "dev": "ts-node-dev -r tsconfig-paths/register --exit-child --cache-directory .cache server",
+    "test": "jest --runInBand --colors --ci",
+    "test:watch": "jest --runInBand --colors --watch",
+    "prebuild": "rm -rf dist",
+    "build": "tsc --outDir dist && tscpaths -p tsconfig.json -s . -o dist",
+    "postbuild": "! is-ci && cp .env* dist ||:",
+    "start": "cd dist && NODE_ENV=production node server",
+    "typeorm": "ts-node -r tsconfig-paths/register node_modules/.bin/typeorm",
+    "sample": "ts-node -r tsconfig-paths/register node_modules/.bin/fixtures -c ormconfig.ts db/sample"
+  },
+  "dependencies": {
+    "apollo-server": "^3.1.2",
+    "bcrypt": "^5.0.0",
+    "class-validator": "^0.12.2",
+    "dotenv": "^8.2.0",
+    "graphql": "^15.4.0",
+    "is-ci": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.5.1",
+    "ramda": "^0.27.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "^1.1.1",
+    "typedi": "^0.10.0",
+    "typeorm": "^0.2.29"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
+    "@types/jest": "^26.0.19",
+    "@types/jsonwebtoken": "^8.5.0",
+    "@types/node": "^14.14.10",
+    "@types/ramda": "^0.27.34",
+    "apollo-server-testing": "^2.19.1",
+    "jest": "^26.6.3",
+    "jest-watch-typeahead": "^0.6.1",
+    "ts-jest": "^26.4.4",
+    "ts-node-dev": "^1.0.0",
+    "tsconfig-paths": "^3.9.0",
+    "tscpaths": "^0.0.9",
+    "typeorm-fixtures-cli": "^1.8.1",
+    "typescript": "^4.3.2"
+  }
+}
