@@ -1,0 +1,34 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: d9b7074666e2734c39c259e76d7b0c206c47b5fe0fd3622d7ed63e9f3b114071
+
+name:           ch14-testing
+version:        0.0.0
+build-type:     Simple
+
+executable ch14-testing
+  main-is: Main.hs
+  other-modules:
+      Arbitrary
+      Arbitrary.ADT
+      Arbitrary.Simple
+      CoArbitrary
+      Exercises
+      Exercises.Gen
+      Exercises.QuickCheck
+      Exercises.WordNumberTest
+      Generator
+      Property
+      Paths_ch14_testing
+  hs-source-dirs:
+      ./.
+      src
+  build-depends:
+      QuickCheck
+    , base
+    , hspec
+  default-language: Haskell2010

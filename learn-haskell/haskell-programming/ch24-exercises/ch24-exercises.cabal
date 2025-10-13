@@ -1,0 +1,29 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 5b2f54b0074137a56901891760fa406c190bb9a73886f6b32b5aef4fdff69ddf
+
+name:           ch24-exercises
+version:        0.0.0
+build-type:     Simple
+
+executable ch24-exercises
+  main-is: Main.hs
+  other-modules:
+      Base10
+      IPv4
+      IPv6
+      LogFile
+      SemVer
+      USCanadaPhone
+      Paths_ch24_exercises
+  hs-source-dirs:
+      ./.
+  build-depends:
+      base
+    , raw-strings-qq
+    , trifecta
+  default-language: Haskell2010

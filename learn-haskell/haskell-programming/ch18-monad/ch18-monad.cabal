@@ -1,0 +1,12 @@
+name:                   ch18-monad
+version:                0.0.0
+build-type:             Simple
+cabal-version:          >= 1.8
+
+library
+  exposed-modules:      Sum
+                      , MonadInstances
+  hs-source-dirs:       src
+  build-depends:        base
+                      , QuickCheck
+                      , checkers

@@ -1,0 +1,9 @@
+dependencies:
+  - base
+  - trifecta
+  - raw-strings-qq
+
+executable:
+  main: Main.hs
+  source-dirs:
+    - .
