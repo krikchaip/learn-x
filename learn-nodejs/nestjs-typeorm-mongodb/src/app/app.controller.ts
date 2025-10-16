@@ -1,4 +1,17 @@
-import { Controller, Get, Ip, Param, Query, Req, Res } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Header,
+  HttpCode,
+  HttpRedirectResponse,
+  HttpStatus,
+  Ip,
+  Param,
+  Query,
+  Redirect,
+  Req,
+  Res,
+} from '@nestjs/common';
 import type { Request, Response } from 'express';
 
 import { AppService } from './app.service';
@@ -8,6 +21,8 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
+  @HttpCode(HttpStatus.NO_CONTENT)
+  @Header('x-nestjs-handler', 'getHello')
   getHello(
     @Req() request?: Request,
     @Ip() ip?: string,
@@ -18,6 +33,7 @@ export class AppController {
     console.log(`request ip: ${ip}`);
     console.log(`request query: ${JSON.stringify(query)}`);
 
+    // Set HTTP Cookie
     response?.cookie('nestjs-controller', this.constructor.name);
 
     return this.appService.getHello();
@@ -25,6 +41,22 @@ export class AppController {
 
   @Get('wildcard/{*splat}')
   wildcard(@Param('splat') splat: string[]) {
+    // '/wildcard/123' -> ['123']
+    // '/wildcard/123/winner' -> ['123', 'winner']
     return JSON.stringify(splat);
+  }
+
+  @Get('docs')
+  @Redirect('https://docs.nestjs.com', HttpStatus.FOUND)
+  getDocs(
+    @Query('version') version?: string,
+  ): HttpRedirectResponse | undefined {
+    if (version === '5') {
+      // Returned values will override any arguments passed to the @Redirect() decorator
+      return {
+        url: 'https://docs.nestjs.com/v5/',
+        statusCode: HttpStatus.FOUND,
+      };
+    }
   }
 }
