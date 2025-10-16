@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  NotFoundException,
 } from '@nestjs/common';
 
 import { CatsService } from './cats.service';
@@ -28,16 +29,34 @@ export class CatsController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.catsService.findOne(+id);
+    const cat = this.catsService.findOne(+id);
+
+    if (!cat) {
+      throw new NotFoundException();
+    }
+
+    return cat;
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    return this.catsService.update(+id, updateCatDto);
+    const cat = this.catsService.update(+id, updateCatDto);
+
+    if (!cat) {
+      throw new NotFoundException();
+    }
+
+    return cat;
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.catsService.remove(+id);
+    const cat = this.catsService.remove(+id);
+
+    if (!cat) {
+      throw new NotFoundException();
+    }
+
+    return cat;
   }
 }
