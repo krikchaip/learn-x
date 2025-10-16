@@ -1,4 +1,4 @@
-import { Controller, Get, Ip, Query, Req, Res } from '@nestjs/common';
+import { Controller, Get, Ip, Param, Query, Req, Res } from '@nestjs/common';
 import type { Request, Response } from 'express';
 
 import { AppService } from './app.service';
@@ -21,5 +21,10 @@ export class AppController {
     response?.cookie('nestjs-controller', this.constructor.name);
 
     return this.appService.getHello();
+  }
+
+  @Get('wildcard/{*splat}')
+  wildcard(@Param('splat') splat: string[]) {
+    return JSON.stringify(splat);
   }
 }
