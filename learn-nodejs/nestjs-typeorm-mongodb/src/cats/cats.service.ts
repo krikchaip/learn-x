@@ -2,26 +2,60 @@ import { Injectable } from '@nestjs/common';
 
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { Cat } from './entities/cat.entity';
 
 @Injectable()
 export class CatsService {
+  private cats: Cat[] = [];
+
+  private genId(): number {
+    const id = this.cats.length + 1;
+
+    const findId = (target: number) => {
+      if (this.cats.find((cat) => cat.id === target)) {
+        return findId(target + 1);
+      } else {
+        return target;
+      }
+    };
+
+    return findId(id);
+  }
+
   create(createCatDto: CreateCatDto) {
-    return 'This action adds a new cat';
+    this.cats.push({ ...createCatDto, id: this.genId() });
   }
 
   findAll() {
-    return `This action returns all cats`;
+    return this.cats;
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cat`;
+    return this.cats.find((cat) => cat.id === id);
   }
 
   update(id: number, updateCatDto: UpdateCatDto) {
-    return `This action updates a #${id} cat`;
+    const idx = this.cats.findIndex((cat) => cat.id === id);
+
+    if (idx === -1) {
+      return;
+    }
+
+    this.cats[idx] = { ...this.cats[idx], ...updateCatDto };
+
+    return this.cats[idx];
   }
 
   remove(id: number) {
-    return `This action removes a #${id} cat`;
+    const idx = this.cats.findIndex((cat) => cat.id === id);
+
+    if (idx === -1) {
+      return;
+    }
+
+    const removedCat = this.cats[idx];
+    this.cats.splice(idx, 1);
+
+    return removedCat;
   }
 }
