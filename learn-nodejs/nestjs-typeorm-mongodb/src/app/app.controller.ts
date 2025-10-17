@@ -3,7 +3,6 @@ import {
   Get,
   Header,
   HttpCode,
-  HttpRedirectResponse,
   HttpStatus,
   Ip,
   Param,
@@ -11,6 +10,7 @@ import {
   Redirect,
   Req,
   Res,
+  type HttpRedirectResponse,
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
 
