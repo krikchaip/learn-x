@@ -1,5 +1,7 @@
 import { Injectable } from '@nestjs/common';
 
+import { CommonService } from 'src/common';
+
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { Cat } from './entities/cat.entity';
@@ -8,22 +10,13 @@ import { Cat } from './entities/cat.entity';
 export class CatsService {
   private cats: Cat[] = [];
 
-  private genId(): number {
-    const id = this.cats.length + 1;
-
-    const findId = (target: number) => {
-      if (this.cats.find((cat) => cat.id === target)) {
-        return findId(target + 1);
-      } else {
-        return target;
-      }
-    };
-
-    return findId(id);
-  }
+  constructor(private readonly commonService: CommonService) {}
 
   create(createCatDto: CreateCatDto) {
-    this.cats.push({ ...createCatDto, id: this.genId() });
+    this.cats.push({
+      ...createCatDto,
+      id: this.commonService.genNextIdx(this.cats, 'id'),
+    });
   }
 
   findAll() {
