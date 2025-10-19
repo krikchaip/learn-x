@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { CommonService } from 'src/common';
+import { DatabaseService } from 'src/database';
 
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
@@ -8,47 +8,25 @@ import { Cat } from './entities/cat.entity';
 
 @Injectable()
 export class CatsService {
-  private cats: Cat[] = [];
-
-  constructor(private readonly commonService: CommonService) {}
+  constructor(private readonly db: DatabaseService) {}
 
   create(createCatDto: CreateCatDto) {
-    this.cats.push({
-      ...createCatDto,
-      id: this.commonService.genNextIdx(this.cats, 'id'),
-    });
+    this.db.insert(Cat, createCatDto as Cat);
   }
 
   findAll() {
-    return this.cats;
+    return this.db.select(Cat);
   }
 
-  findOne(id: number) {
-    return this.cats.find((cat) => cat.id === id);
+  findOne(id: number): Cat | undefined {
+    return this.db.select(Cat, [['id', id]])[0];
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
-    const idx = this.cats.findIndex((cat) => cat.id === id);
-
-    if (idx === -1) {
-      return;
-    }
-
-    this.cats[idx] = { ...this.cats[idx], ...updateCatDto };
-
-    return this.cats[idx];
+  update(id: number, updateCatDto: UpdateCatDto): Cat | undefined {
+    return this.db.update(Cat, [['id', id]], updateCatDto as Cat)[0];
   }
 
-  remove(id: number) {
-    const idx = this.cats.findIndex((cat) => cat.id === id);
-
-    if (idx === -1) {
-      return;
-    }
-
-    const removedCat = this.cats[idx];
-    this.cats.splice(idx, 1);
-
-    return removedCat;
+  remove(id: number): Cat | undefined {
+    return this.db.delete(Cat, [['id', id]])[0];
   }
 }
