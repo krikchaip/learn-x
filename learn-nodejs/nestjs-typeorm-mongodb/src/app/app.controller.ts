@@ -39,7 +39,8 @@ export class AppController {
     return this.appService.getHello();
   }
 
-  @Get('wildcard/{*splat}')
+  // @Get('wildcard/*splat') // mark `splat` as REQUIRED
+  @Get('wildcard/{*splat}') // mark `splat` as OPTIONAL
   wildcard(@Param('splat') splat: string[]) {
     // '/wildcard/123' -> ['123']
     // '/wildcard/123/winner' -> ['123', 'winner']
