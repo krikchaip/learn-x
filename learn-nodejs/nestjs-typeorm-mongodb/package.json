@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "build": "bun -b nest build",
-    "format": "bun -b prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "format": "bun -b prettier --write \"{src,apps,libs,test}/**/*.ts\"",
     "start": "bun -b nest start",
     "start:dev": "bun -b nest start --watch",
     "start:debug": "bun -b nest start --debug --watch",
