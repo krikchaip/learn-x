@@ -1,5 +1,6 @@
 import {
   Module,
+  RequestMethod,
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
@@ -16,6 +17,14 @@ import { CatsController } from './cats.controller';
 export class CatsModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     // apply logger middleware to every path/method in a controller
-    consumer.apply(LoggerMiddleware).forRoutes(CatsController);
+    consumer
+      .apply(LoggerMiddleware)
+      .exclude({ path: 'cats', method: RequestMethod.POST })
+      .forRoutes(CatsController);
+
+    // target specific path and method
+    consumer
+      .apply(LoggerMiddleware)
+      .forRoutes({ path: 'cats', method: RequestMethod.POST });
   }
 }
