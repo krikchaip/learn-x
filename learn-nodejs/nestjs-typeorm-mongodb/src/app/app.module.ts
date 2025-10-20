@@ -7,7 +7,7 @@ import {
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
 import { CatsModule } from 'src/cats';
-import { LoggerMiddleware } from 'src/middleware';
+import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,5 +22,10 @@ export class AppModule implements NestModule {
     // apply a middleware to wildcard routes
     // consumer.apply(LoggerMiddleware).forRoutes('wildcard/*splat');
     consumer.apply(LoggerMiddleware).forRoutes('wildcard/{*splat}');
+
+    // apply global middleware (for DI purpose)
+    consumer
+      .apply(HeaderMiddleware({ 'X-Operation-Remark': 'NORMAL' }))
+      .forRoutes('*');
   }
 }
