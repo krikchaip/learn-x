@@ -7,6 +7,8 @@ import {
   Param,
   Delete,
   NotFoundException,
+  HttpException,
+  HttpStatus,
 } from '@nestjs/common';
 
 import { CatsService } from './cats.service';
@@ -32,6 +34,7 @@ export class CatsController {
     const cat = this.catsService.findOne(+id);
 
     if (!cat) {
+      // response: { "message": "Not Found", "statusCode": 404 }
       throw new NotFoundException();
     }
 
@@ -43,7 +46,8 @@ export class CatsController {
     const cat = this.catsService.update(+id, updateCatDto);
 
     if (!cat) {
-      throw new NotFoundException();
+      // works the same as the above
+      throw new HttpException('Not Found', HttpStatus.NOT_FOUND);
     }
 
     return cat;
@@ -54,7 +58,16 @@ export class CatsController {
     const cat = this.catsService.remove(+id);
 
     if (!cat) {
-      throw new NotFoundException();
+      // overriding the entire response body
+      // response: { "status": 404, "error": "cats with id=1 is not found" }
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          error: `cats with id=${id} is not found`,
+        },
+        HttpStatus.NOT_FOUND,
+        { cause: new Error(`[original error] cats ${id} not found`) },
+      );
     }
 
     return cat;
