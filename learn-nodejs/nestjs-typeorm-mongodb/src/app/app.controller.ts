@@ -72,4 +72,9 @@ export class AppController {
       };
     }
   }
+
+  @Get('error')
+  error() {
+    throw new Error('throwing generic error');
+  }
 }

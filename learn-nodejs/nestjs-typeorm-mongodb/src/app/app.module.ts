@@ -3,6 +3,7 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
+import { APP_FILTER } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
@@ -11,11 +12,23 @@ import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CatchEverythingFilter } from 'src/filter';
 
 @Module({
-  imports: [DatabaseModule.forRoot(), CommonModule, CatsModule],
+  imports: [
+    // global modules
+    CommonModule,
+    DatabaseModule.forRoot(), // dynamically registered
+
+    CatsModule,
+  ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+
+    // register global-scoped class-based filters (for DI purpose)
+    { provide: APP_FILTER, useClass: CatchEverythingFilter },
+  ],
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
