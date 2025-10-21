@@ -9,13 +9,17 @@ import {
   NotFoundException,
   HttpException,
   HttpStatus,
+  UseFilters,
 } from '@nestjs/common';
+
+import { HttpExceptionFilter } from 'src/filter';
 
 import { CatsService } from './cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
+@UseFilters(HttpExceptionFilter)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
