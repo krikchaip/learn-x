@@ -10,9 +10,12 @@ import {
   Redirect,
   Req,
   Res,
+  UseFilters,
   type HttpRedirectResponse,
 } from '@nestjs/common';
 import type { Request, Response } from 'express';
+
+import { HttpExceptionFilter } from 'src/filter';
 
 import { AppService } from './app.service';
 import { ForbiddenException } from './app.exception';
@@ -42,6 +45,7 @@ export class AppController {
 
   // @Get('wildcard/*splat') // mark `splat` as REQUIRED
   @Get('wildcard/{*splat}') // mark `splat` as OPTIONAL
+  @UseFilters(HttpExceptionFilter)
   wildcard(@Param('splat') splat: string[]) {
     // splat:
     // - '/wildcard/123' -> ['123']
