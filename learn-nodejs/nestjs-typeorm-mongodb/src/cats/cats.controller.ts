@@ -10,6 +10,9 @@ import {
   HttpException,
   HttpStatus,
   UseFilters,
+  ParseIntPipe,
+  Query,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
@@ -34,8 +37,15 @@ export class CatsController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    const cat = this.catsService.findOne(+id);
+  findOne(
+    @Param('id', ParseIntPipe) id: number,
+    @Query('uuid', ParseUUIDPipe) uuid?: string, // UUID is supported by default
+  ) {
+    if (uuid) {
+      console.log(`[/cats/:id] uuid: ${uuid}`);
+    }
+
+    const cat = this.catsService.findOne(id);
 
     if (!cat) {
       // response: { "message": "Not Found", "statusCode": 404 }
@@ -46,8 +56,15 @@ export class CatsController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateCatDto: UpdateCatDto) {
-    const cat = this.catsService.update(+id, updateCatDto);
+  update(
+    @Param(
+      'id', // pass in an in-place instance for customization purpose
+      new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
+    )
+    id: number,
+    @Body() updateCatDto: UpdateCatDto,
+  ) {
+    const cat = this.catsService.update(id, updateCatDto);
 
     if (!cat) {
       // works the same as the above
