@@ -13,13 +13,15 @@ import {
   ParseIntPipe,
   Query,
   ParseUUIDPipe,
+  UsePipes,
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
+import { ZodValidationPipe } from 'src/pipe';
 
 import { CatsService } from './cats.service';
-import { CreateCatDto } from './dto/create-cat.dto';
-import { UpdateCatDto } from './dto/update-cat.dto';
+import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
+import { type UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
@@ -27,6 +29,7 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
+  @UsePipes(new ZodValidationPipe(createCatSchema)) // apply this pipe to ALL params, one-by-one
   create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
@@ -38,7 +41,7 @@ export class CatsController {
 
   @Get(':id')
   findOne(
-    @Param('id', ParseIntPipe) id: number,
+    @Param('id', ParseIntPipe) id: number, // using pipe on a controller method's param
     @Query('uuid', ParseUUIDPipe) uuid?: string, // UUID is supported by default
   ) {
     if (uuid) {
