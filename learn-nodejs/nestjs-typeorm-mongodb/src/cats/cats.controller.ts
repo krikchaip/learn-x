@@ -29,7 +29,7 @@ export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
   @Post()
-  @UsePipes(new ZodValidationPipe(createCatSchema)) // apply this pipe to ALL params, one-by-one
+  @UsePipes(ZodValidationPipe(createCatSchema)) // apply this pipe to ALL params, one-by-one
   create(@Body() createCatDto: CreateCatDto) {
     return this.catsService.create(createCatDto);
   }
