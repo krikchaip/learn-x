@@ -7,7 +7,7 @@ import { HeaderMiddleware } from './middleware';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // apply global middleware
+  // apply global middleware (no DI is allowed here)
   app.use(HeaderMiddleware({ 'X-Powered-By': 'NestJS' }));
 
   await app.listen(process.env.PORT ?? 3000);
