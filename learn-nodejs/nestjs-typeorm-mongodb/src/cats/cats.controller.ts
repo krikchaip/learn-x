@@ -14,6 +14,7 @@ import {
   Query,
   ParseUUIDPipe,
   UsePipes,
+  DefaultValuePipe,
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
@@ -36,7 +37,14 @@ export class CatsController {
   }
 
   @Get()
-  findAll() {
+  findAll(
+    // set the default value to '1' when the following happen
+    // - error occurs during parsing
+    // - upon receiving `null`/`undefined` value
+    @Query('page', new DefaultValuePipe(1), ParseIntPipe) page: number,
+  ) {
+    console.log(`page: ${page} (${typeof page})`);
+
     return this.catsService.findAll();
   }
 
