@@ -22,6 +22,7 @@ import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
+import { RemoveCatDto } from './dto/remove-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
@@ -80,8 +81,8 @@ export class CatsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    const cat = this.catsService.remove(+id);
+  remove(@Param() { id }: RemoveCatDto) {
+    const cat = this.catsService.remove(id);
 
     if (!cat) {
       // overriding the entire response body

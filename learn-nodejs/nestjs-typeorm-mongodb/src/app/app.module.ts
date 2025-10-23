@@ -1,9 +1,10 @@
 import {
   Module,
+  ValidationPipe,
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { APP_FILTER } from '@nestjs/core';
+import { APP_FILTER, APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
@@ -26,8 +27,17 @@ import { CatchEverythingFilter } from 'src/filter';
   providers: [
     AppService,
 
-    // register global-scoped class-based filters (for DI purpose)
+    // register a global-scoped class-based filter (for DI purpose)
     { provide: APP_FILTER, useClass: CatchEverythingFilter },
+
+    // register a global-scoped pipe (for DI purpose)
+    {
+      provide: APP_PIPE,
+      useValue: new ValidationPipe({
+        transform: true, // enables transformation of plain objects to DTO instances
+        transformOptions: { enableImplicitConversion: true }, // enables automatic type conversion
+      }),
+    },
   ],
 })
 export class AppModule implements NestModule {
