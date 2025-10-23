@@ -1,3 +1,24 @@
-import { type CreateCatDto } from './create-cat.dto';
+import {
+  IsInt,
+  IsNotEmpty,
+  IsOptional,
+  IsPositive,
+  IsString,
+} from 'class-validator';
 
-export type UpdateCatDto = Partial<CreateCatDto>;
+export class UpdateCatDto {
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  name?: string;
+
+  @IsInt()
+  @IsPositive()
+  @IsOptional()
+  age?: number;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsOptional()
+  breed?: string;
+}

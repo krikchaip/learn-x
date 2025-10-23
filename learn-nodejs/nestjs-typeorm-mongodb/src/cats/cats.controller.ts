@@ -17,11 +17,11 @@ import {
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
-import { ZodValidationPipe } from 'src/pipe';
+import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
-import { type UpdateCatDto } from './dto/update-cat.dto';
+import { UpdateCatDto } from './dto/update-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
@@ -65,7 +65,9 @@ export class CatsController {
       new ParseIntPipe({ errorHttpStatusCode: HttpStatus.NOT_ACCEPTABLE }),
     )
     id: number,
-    @Body() updateCatDto: UpdateCatDto,
+
+    @Body(ClassValidationPipe)
+    updateCatDto: UpdateCatDto,
   ) {
     const cat = this.catsService.update(id, updateCatDto);
 
