@@ -8,7 +8,7 @@
 
     "target": "ES2023",
     "outDir": "./dist",
-    "declaration": true,
+    "declaration": false,
     "incremental": true,
     "removeComments": true,
     "skipLibCheck": true,
