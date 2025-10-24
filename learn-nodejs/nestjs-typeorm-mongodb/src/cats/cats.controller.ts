@@ -23,7 +23,7 @@ import { HttpExceptionFilter } from 'src/filter';
 import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
 import { RolesGuard } from 'src/guard';
 import { Roles } from 'src/decorator';
-import { LoggingInterceptor } from 'src/interceptor';
+import { LoggingInterceptor, MapResponseInterceptor } from 'src/interceptor';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
@@ -32,6 +32,7 @@ import { RemoveCatDto } from './dto/remove-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
+@UseInterceptors(MapResponseInterceptor)
 @UseGuards(RolesGuard)
 @Roles(['public'])
 export class CatsController {
