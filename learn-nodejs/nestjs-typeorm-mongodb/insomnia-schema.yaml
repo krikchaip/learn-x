@@ -1,0 +1,324 @@
+type: collection.insomnia.rest/5.0
+name: nestjs-typeorm-mongodb
+meta:
+  id: wrk_b621b78a24e14d428da26b313794e508
+  created: 1760621217201
+  modified: 1760643203745
+  description: ""
+collection:
+  - name: cats
+    meta:
+      id: fld_e35c4ca39cb44ef49a9c0e46d0caee85
+      created: 1760643228848
+      modified: 1760643228848
+      sortKey: -1760643228848
+      description: ""
+    children:
+      - url: http://localhost:3000/cats
+        name: create
+        meta:
+          id: req_762403617b584c7d880054dd7b2fcc31
+          created: 1760643236538
+          modified: 1761297397130
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236538
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Killua",
+            	"age": 1,
+            	"breed": "Scottish"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_b4d7e964b2964e23bf7c93ca4c019bf2
+          - name: User-Agent
+            value: insomnia/11.6.1
+            id: pair_7d1bc8c2fd5d4eb2b20c37bc4ec7cd76
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/cats
+        name: findAll
+        meta:
+          id: req_bb9d3520172046959fb9b346d45d0f5a
+          created: 1760643337721
+          modified: 1761254283811
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236488
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        parameters:
+          - id: pair_a81d0f5c1468467ab82c3dfd6a12a2d9
+            name: page
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/cats/:id
+        name: findOne
+        meta:
+          id: req_63097fc4418f4ebfa826e242df312647
+          created: 1760643358691
+          modified: 1761164271489
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236438
+        method: GET
+        body:
+          mimeType: application/json
+          text: ""
+        parameters:
+          - id: pair_cc5c0b39020e4ab2ae0d9a77d7c996e6
+            name: uuid
+            value: "{% uuid 'v4' %}"
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "1"
+      - url: http://localhost:3000/cats/:id
+        name: update
+        meta:
+          id: req_8ab08d15e03b46b883c74eb4fcc32294
+          created: 1760643545747
+          modified: 1761297533552
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236388
+        method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"name": "Winner",
+            	"age": 1
+            }
+        parameters:
+          - id: pair_8cfd409d726e48b6b09f9d7ba4d25949
+            name: ""
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_fef95f008b424a278fb1d43f5930d1c6
+          - name: User-Agent
+            value: insomnia/11.6.1
+            id: pair_c290ba34179541a4b7cb15cd8cab9463
+          - id: pair_b6fa53b3b9b0447f850e5a629cea9e0e
+            name: X-Role
+            value: admin
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "1"
+      - url: http://localhost:3000/cats/:id
+        name: remove
+        meta:
+          id: req_2d7faf6730a64f8bb6b1b5db856d3645
+          created: 1760643586887
+          modified: 1761297556490
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236338
+        method: DELETE
+        body:
+          mimeType: application/json
+          text: ""
+        parameters:
+          - id: pair_12910a43b722445fa126a03c16d80570
+            name: ""
+            value: ""
+            description: ""
+            disabled: false
+        headers:
+          - name: Content-Type
+            value: application/json
+            id: pair_10f0944c9fb24a4f914f10db0525a79c
+          - name: User-Agent
+            value: insomnia/11.6.1
+            id: pair_758ab3f374654b4a8903db3774550bb3
+          - id: pair_c0cab46f1edc4f57bcd97556e684e18d
+            name: X-Role
+            value: admin
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+        pathParameters:
+          - name: id
+            value: "1"
+  - name: app
+    meta:
+      id: fld_7e0f2f9903634ca69e9497b392008bdc
+      created: 1760647754582
+      modified: 1760647792030
+      sortKey: -1760647754582
+      description: ""
+    children:
+      - url: http://localhost:3000
+        name: getHello
+        meta:
+          id: req_97b010180e4c45f59f40f6408f76e631
+          created: 1760690211392
+          modified: 1760690233278
+          isPrivate: false
+          description: ""
+          sortKey: -1760690211392
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/wildcard/
+        name: wildcard
+        meta:
+          id: req_b0ea1624360345f998ca80660dcb6234
+          created: 1760690259603
+          modified: 1761083410247
+          isPrivate: false
+          description: ""
+          sortKey: -1760666723965
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/docs
+        name: getDocs
+        meta:
+          id: req_407ef372e6b24fe08f71868277181ceb
+          created: 1760690287253
+          modified: 1760690309665
+          isPrivate: false
+          description: ""
+          sortKey: -1760654980251.5
+        method: GET
+        parameters:
+          - id: pair_3b61e41fc6584c1ca883aee160442aa0
+            name: version
+            value: "5"
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/error
+        name: error
+        meta:
+          id: req_749a59f695584ac2af297109f0018b1c
+          created: 1761083056263
+          modified: 1761083083540
+          isPrivate: false
+          description: ""
+          sortKey: -1760654980151.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.1
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f300b30006120b84913e6235eb2d50a20a1d0852
+    created: 1760621217204
+    modified: 1761292666160
+  cookies:
+    - key: nestjs-controller
+      value: AppController
+      domain: localhost
+      path: /
+      hostOnly: true
+      creation: 2025-10-16T13:27:13.517Z
+      lastAccessed: 2025-10-24T07:57:46.160Z
+      id: 74702f3b-1364-4570-81cc-1e8df0ac035a
+environments:
+  name: Base Environment
+  meta:
+    id: env_f300b30006120b84913e6235eb2d50a20a1d0852
+    created: 1760621217202
+    modified: 1760621217202
+    isPrivate: false
