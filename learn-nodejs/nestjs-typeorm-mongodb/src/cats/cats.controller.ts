@@ -15,10 +15,12 @@ import {
   ParseUUIDPipe,
   UsePipes,
   DefaultValuePipe,
+  UseGuards,
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
 import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
+import { RolesGuard } from 'src/guard';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
@@ -27,6 +29,7 @@ import { RemoveCatDto } from './dto/remove-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
+@UseGuards(RolesGuard)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 

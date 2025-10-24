@@ -4,7 +4,7 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { APP_FILTER, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
@@ -14,6 +14,7 @@ import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatchEverythingFilter } from 'src/filter';
+import { AuthGuard } from 'src/guard';
 
 @Module({
   imports: [
@@ -29,6 +30,9 @@ import { CatchEverythingFilter } from 'src/filter';
 
     // register a global-scoped class-based filter (for DI purpose)
     { provide: APP_FILTER, useClass: CatchEverythingFilter },
+
+    // register a global-scoped guard (for DI purpose)
+    { provide: APP_GUARD, useClass: AuthGuard(() => true) },
 
     // register a global-scoped pipe (for DI purpose)
     {
