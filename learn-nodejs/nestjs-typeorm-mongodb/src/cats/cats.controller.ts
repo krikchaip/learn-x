@@ -21,6 +21,7 @@ import {
 import { HttpExceptionFilter } from 'src/filter';
 import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
 import { RolesGuard } from 'src/guard';
+import { Roles } from 'src/decorator';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
@@ -30,6 +31,7 @@ import { RemoveCatDto } from './dto/remove-cat.dto';
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
 @UseGuards(RolesGuard)
+@Roles(['public'])
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
@@ -71,6 +73,7 @@ export class CatsController {
   }
 
   @Patch(':id')
+  @Roles(['admin'])
   update(
     @Param(
       'id', // pass in an in-place instance for customization purpose
@@ -92,6 +95,7 @@ export class CatsController {
   }
 
   @Delete(':id')
+  @Roles(['admin'])
   remove(@Param() { id }: RemoveCatDto) {
     const cat = this.catsService.remove(id);
 
