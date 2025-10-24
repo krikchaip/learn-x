@@ -13,6 +13,7 @@ import {
   UseFilters,
   type HttpRedirectResponse,
 } from '@nestjs/common';
+import { concatMap, Observable, of, timer } from 'rxjs';
 import type { Request, Response } from 'express';
 
 import { HttpExceptionFilter } from 'src/filter';
@@ -76,5 +77,11 @@ export class AppController {
   @Get('error')
   error() {
     throw new Error('throwing generic error');
+  }
+
+  @Get('slow')
+  slow(@Query('delay') delay: number = 1000): Observable<string> {
+    // a method handler can also return rxjs's observable
+    return timer(delay).pipe(concatMap(() => of("I'm so slow, baby.")));
   }
 }

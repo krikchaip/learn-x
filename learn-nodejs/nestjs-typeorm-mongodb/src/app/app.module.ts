@@ -4,17 +4,18 @@ import {
   type MiddlewareConsumer,
   type NestModule,
 } from '@nestjs/common';
-import { APP_FILTER, APP_GUARD, APP_PIPE } from '@nestjs/core';
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
 import { CatsModule } from 'src/cats';
 import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
+import { AuthGuard } from 'src/guard';
+import { TimeoutInterceptor } from 'src/interceptor';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatchEverythingFilter } from 'src/filter';
-import { AuthGuard } from 'src/guard';
 
 @Module({
   imports: [
@@ -33,6 +34,9 @@ import { AuthGuard } from 'src/guard';
 
     // register a global-scoped guard (for DI purpose)
     { provide: APP_GUARD, useClass: AuthGuard(() => true) },
+
+    // register a global-scoped interceptor (for DI purpose)
+    { provide: APP_INTERCEPTOR, useClass: TimeoutInterceptor(1000) },
 
     // register a global-scoped pipe (for DI purpose)
     {

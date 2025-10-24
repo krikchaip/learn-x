@@ -32,9 +32,9 @@ import { RemoveCatDto } from './dto/remove-cat.dto';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
-@UseInterceptors(MapResponseInterceptor)
 @UseGuards(RolesGuard)
 @Roles(['public'])
+@UseInterceptors(MapResponseInterceptor)
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
