@@ -16,12 +16,14 @@ import {
   UsePipes,
   DefaultValuePipe,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 
 import { HttpExceptionFilter } from 'src/filter';
 import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
 import { RolesGuard } from 'src/guard';
 import { Roles } from 'src/decorator';
+import { LoggingInterceptor } from 'src/interceptor';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
@@ -42,6 +44,7 @@ export class CatsController {
   }
 
   @Get()
+  @UseInterceptors(LoggingInterceptor)
   findAll(
     // set the default value to '1' when the following happen
     // - error occurs during parsing
@@ -54,6 +57,7 @@ export class CatsController {
   }
 
   @Get(':id')
+  @UseInterceptors(LoggingInterceptor)
   findOne(
     @Param('id', ParseIntPipe) id: number, // using pipe on a controller method's param
     @Query('uuid', ParseUUIDPipe) uuid?: string, // UUID is supported by default
