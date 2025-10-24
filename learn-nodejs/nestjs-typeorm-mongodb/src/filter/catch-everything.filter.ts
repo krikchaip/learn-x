@@ -16,7 +16,6 @@ export class CatchEverythingFilter implements ExceptionFilter {
     private readonly commonService: CommonService,
   ) {}
 
-  //
   catch(exception: unknown, host: ArgumentsHost) {
     // a generic way to retrieve the express/fastify application instance
     const { httpAdapter } = this.httpAdapterHost;
