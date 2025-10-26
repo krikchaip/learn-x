@@ -9,34 +9,27 @@ import {
   NotFoundException,
   HttpException,
   HttpStatus,
-  UseFilters,
   ParseIntPipe,
   Query,
   ParseUUIDPipe,
   UsePipes,
   DefaultValuePipe,
-  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 
-import { HttpExceptionFilter } from 'src/filter';
 import { ZodValidationPipe, ClassValidationPipe } from 'src/pipe';
-import { RolesGuard } from 'src/guard';
 import { Roles } from 'src/decorator';
-import { LoggingInterceptor, MapResponseInterceptor } from 'src/interceptor';
+import { LoggingInterceptor } from 'src/interceptor';
 
 import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { RemoveCatDto } from './dto/remove-cat.dto';
-import { Cat } from './cats.decorator';
+import { Cat, CatsControllerOpts } from './cats.decorator';
 import { Cat as CatEntity } from './entities/cat.entity';
 
 @Controller('cats')
-@UseFilters(HttpExceptionFilter)
-@UseGuards(RolesGuard)
-@Roles(['public'])
-@UseInterceptors(MapResponseInterceptor)
+@CatsControllerOpts('public')
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
