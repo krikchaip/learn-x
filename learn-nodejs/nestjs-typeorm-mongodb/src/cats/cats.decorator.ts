@@ -21,6 +21,6 @@ export const GetCatId = createParamDecorator(
   },
 );
 
-// it works the same way as pipe
+// works the same way as other builtin param decorators (`@Body`, `@Query`, ...)
 export const Cat = (prop?: keyof CatEntity) =>
   GetCatId('X-Cat-Id', GetCatFromIdPipe(prop));

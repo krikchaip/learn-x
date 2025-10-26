@@ -81,7 +81,7 @@ collection:
         meta:
           id: req_8ef49f8711804f679df75573cd6774e9
           created: 1760643358691
-          modified: 1761321202835
+          modified: 1761344523033
           isPrivate: false
           description: ""
           sortKey: -1760643236438
@@ -109,7 +109,7 @@ collection:
           rebuildPath: true
         pathParameters:
           - name: id
-            value: "2"
+            value: "1"
       - url: http://localhost:3000/cats/:id
         name: update
         meta:
@@ -155,7 +155,7 @@ collection:
         meta:
           id: req_25b573b1da1e498681b2d8a491e3d73a
           created: 1760643586887
-          modified: 1761321332235
+          modified: 1761500207614
           isPrivate: false
           description: ""
           sortKey: -1760643236338
@@ -185,7 +185,34 @@ collection:
           rebuildPath: true
         pathParameters:
           - name: id
-            value: "2"
+            value: "1"
+      - url: http://localhost:3000/cats/age
+        name: ageUp
+        meta:
+          id: req_78cda00f8f49401e902ae80262a0560b
+          created: 1761500134413
+          modified: 1761504319069
+          isPrivate: false
+          description: ""
+          sortKey: -1760643236238
+        method: POST
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+            id: pair_00d65e8868434511a94ec3c46fe9bd83
+          - id: pair_2c0ffb7fa1c846509908ad07353a078c
+            name: X-Cat-Id
+            value: "1"
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
   - name: app
     meta:
       id: fld_502e353968f2471fb9b3f9f7fd004871
@@ -215,12 +242,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3000/wildcard/1
+      - url: http://localhost:3000/wildcard/forbidden
         name: wildcard
         meta:
           id: req_315aa9df5664409998ea8eaab47468fa
           created: 1760690259603
-          modified: 1761321115866
+          modified: 1761500186978
           isPrivate: false
           description: ""
           sortKey: -1760666723965
@@ -288,7 +315,7 @@ collection:
         meta:
           id: req_174f92311d0747f4b6f377ed9ea956ae
           created: 1761323930323
-          modified: 1761328479925
+          modified: 1761500152611
           isPrivate: false
           description: ""
           sortKey: -1760654980051.5
