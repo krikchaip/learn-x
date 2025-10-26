@@ -44,6 +44,7 @@ import { CatchEverythingFilter } from 'src/filter';
       useValue: new ValidationPipe({
         transform: true, // enables transformation of plain objects to DTO instances
         transformOptions: { enableImplicitConversion: true }, // enables automatic type conversion
+        validateCustomDecorators: true, // enables validation for decorators other than `Body`, `Param`, etc.
       }),
     },
   ],

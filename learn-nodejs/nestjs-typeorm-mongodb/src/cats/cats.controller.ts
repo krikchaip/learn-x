@@ -29,6 +29,8 @@ import { CatsService } from './cats.service';
 import { type CreateCatDto, createCatSchema } from './dto/create-cat.dto';
 import { UpdateCatDto } from './dto/update-cat.dto';
 import { RemoveCatDto } from './dto/remove-cat.dto';
+import { Cat } from './cats.decorator';
+import { Cat as CatEntity } from './entities/cat.entity';
 
 @Controller('cats')
 @UseFilters(HttpExceptionFilter)
@@ -117,6 +119,12 @@ export class CatsController {
       );
     }
 
+    return cat;
+  }
+
+  @Post('age')
+  ageUp(@Cat() cat: CatEntity) {
+    cat = this.catsService.update(cat.id, { age: cat.age + 1 })!;
     return cat;
   }
 }
