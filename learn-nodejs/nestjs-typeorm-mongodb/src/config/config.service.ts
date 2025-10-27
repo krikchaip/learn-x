@@ -3,7 +3,10 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-import { type ConfigModuleConfig } from './config.module-definition';
+import {
+  type ConfigModuleConfig,
+  MODULE_OPTIONS_TOKEN,
+} from './config.module-definition';
 import { EnvConfig } from './entities';
 
 @Injectable()
@@ -11,7 +14,8 @@ export class ConfigService {
   private envConfig: EnvConfig;
 
   constructor(
-    @Inject('CONFIG_OPTIONS')
+    // @Inject('CONFIG_OPTIONS')
+    @Inject(MODULE_OPTIONS_TOKEN)
     @Optional()
     private readonly options?: ConfigModuleConfig,
   ) {

@@ -8,13 +8,11 @@ import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
-import { ConfigModule } from 'src/config';
-import { CatsModule } from 'src/cats';
+import { ConfigModule, DefaultOptionsFactory } from 'src/config';
+import { CatsModule, Cat } from 'src/cats';
 import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 import { AuthGuard } from 'src/guard';
 import { TimeoutInterceptor } from 'src/interceptor';
-
-import { Cat } from 'src/cats/entities';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -23,9 +21,16 @@ import { CatchEverythingFilter } from 'src/filter';
 @Module({
   imports: [
     // global modules
-    CommonModule,
+    CommonModule, // statically registered
     DatabaseModule.forRoot({ entities: [Cat] }), // dynamically registered
-    ConfigModule.forRoot({ folder: './src/config' }), // dynamically registered
+
+    // ConfigModule.forRoot({ folder: './src/config' }),
+    // ConfigModule.forRootAsync({
+    //   useFactory: () => ({ folder: './src/config' }),
+    // }),
+
+    // dynamic modules can also be configured asynchronously using a factory class to provide options.
+    ConfigModule.forRootAsync({ useClass: DefaultOptionsFactory }),
 
     CatsModule,
   ],
