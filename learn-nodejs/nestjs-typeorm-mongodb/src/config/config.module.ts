@@ -1,9 +1,7 @@
 import { DynamicModule, Module } from '@nestjs/common';
-import { ConfigService } from './config.service';
 
-export interface ConfigModuleConfig {
-  folder?: string;
-}
+import { ConfigService } from './config.service';
+import { ConfigModuleConfig } from './config.module-definition';
 
 @Module({})
 export class ConfigModule {

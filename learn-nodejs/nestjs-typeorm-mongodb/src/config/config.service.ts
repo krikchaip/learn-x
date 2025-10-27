@@ -3,7 +3,7 @@ import fs from 'fs';
 import path from 'path';
 import dotenv from 'dotenv';
 
-import { type ConfigModuleConfig } from './config.module';
+import { type ConfigModuleConfig } from './config.module-definition';
 import { EnvConfig } from './entities';
 
 @Injectable()
