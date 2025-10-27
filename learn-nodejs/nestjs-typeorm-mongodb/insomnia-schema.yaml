@@ -155,7 +155,7 @@ collection:
         meta:
           id: req_25b573b1da1e498681b2d8a491e3d73a
           created: 1760643586887
-          modified: 1761500207614
+          modified: 1761505586482
           isPrivate: false
           description: ""
           sortKey: -1760643236338
@@ -171,10 +171,13 @@ collection:
         headers:
           - name: Content-Type
             value: application/json
+            id: pair_94a7a51acb4944a3bedd0fd9ea1a13d7
           - name: User-Agent
             value: insomnia/11.6.1
+            id: pair_aa3b57824b294068b791509e6b302e10
           - name: X-Role
             value: admin
+            id: pair_167c1ac463094ec3992af0c5a314bd58
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -337,12 +340,39 @@ collection:
             send: true
             store: true
           rebuildPath: true
+      - url: http://localhost:3000/config
+        name: getConfig
+        meta:
+          id: req_47d6bf5bc9ac4dd68feacdde818819b6
+          created: 1761577483234
+          modified: 1761577834489
+          isPrivate: false
+          description: ""
+          sortKey: -1760654979951.5
+        method: GET
+        parameters:
+          - id: pair_68670470dff346dca91389ee1d9ade23
+            name: key
+            value: SUPER_SECRET
+            description: ""
+            disabled: false
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:
     id: jar_e4cef7789d14420a97af608cbac44660
     created: 1760621217204
-    modified: 1761321107716
+    modified: 1761577545921
   cookies:
     - key: nestjs-controller
       value: AppController
@@ -350,8 +380,8 @@ cookieJar:
       path: /
       hostOnly: true
       creation: 2025-10-16T13:27:13.517Z
-      lastAccessed: 2025-10-24T15:51:47.716Z
-      id: 7e24a6ab-a526-4226-afa2-340e7fc77085
+      lastAccessed: 2025-10-27T15:05:45.921Z
+      id: db2b415e-908c-41a8-a753-5de9fe3c3707
 environments:
   name: Base Environment
   meta:
