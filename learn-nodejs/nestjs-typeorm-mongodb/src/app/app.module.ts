@@ -13,6 +13,8 @@ import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 import { AuthGuard } from 'src/guard';
 import { TimeoutInterceptor } from 'src/interceptor';
 
+import { Cat } from 'src/cats/entities';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CatchEverythingFilter } from 'src/filter';
@@ -21,7 +23,7 @@ import { CatchEverythingFilter } from 'src/filter';
   imports: [
     // global modules
     CommonModule,
-    DatabaseModule.forRoot(), // dynamically registered
+    DatabaseModule.forRoot({ entities: [Cat] }), // dynamically registered
 
     CatsModule,
   ],

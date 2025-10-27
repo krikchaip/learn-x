@@ -10,7 +10,7 @@ describe('DatabaseService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [CommonModule],
-      providers: [DatabaseService],
+      providers: [{ provide: 'COLLECTIONS', useValue: {} }, DatabaseService],
     }).compile();
 
     service = module.get<DatabaseService>(DatabaseService);

@@ -5,13 +5,14 @@ import { DatabaseModule } from 'src/database';
 
 import { CatsController } from './cats.controller';
 import { CatsService } from './cats.service';
+import { Cat } from './entities';
 
 describe('CatsController', () => {
   let controller: CatsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [DatabaseModule.forRoot(), CommonModule],
+      imports: [DatabaseModule.forRoot({ entities: [Cat] }), CommonModule],
       controllers: [CatsController],
       providers: [CatsService],
     }).compile();
