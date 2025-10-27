@@ -8,6 +8,7 @@ import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
+import { ConfigModule } from 'src/config';
 import { CatsModule } from 'src/cats';
 import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 import { AuthGuard } from 'src/guard';
@@ -24,6 +25,7 @@ import { CatchEverythingFilter } from 'src/filter';
     // global modules
     CommonModule,
     DatabaseModule.forRoot({ entities: [Cat] }), // dynamically registered
+    ConfigModule.forRoot({ folder: './config' }), // dynamically registered
 
     CatsModule,
   ],
