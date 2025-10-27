@@ -17,13 +17,17 @@ import { concatMap, Observable, of, timer } from 'rxjs';
 import type { Request, Response } from 'express';
 
 import { HttpExceptionFilter } from 'src/filter';
+import { type EnvConfig, ConfigService } from 'src/config';
 
 import { AppService } from './app.service';
 import { ForbiddenException } from './app.exception';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(
+    private readonly configService: ConfigService,
+    private readonly appService: AppService,
+  ) {}
 
   @Get()
   @HttpCode(HttpStatus.NO_CONTENT)
@@ -83,5 +87,12 @@ export class AppController {
   slow(@Query('delay') delay: number = 1000): Observable<string> {
     // a method handler can also return rxjs's observable
     return timer(delay).pipe(concatMap(() => of("I'm so slow, baby.")));
+  }
+
+  @Get('config')
+  getConfig<K extends keyof EnvConfig>(
+    @Query('key') key?: K,
+  ): EnvConfig | EnvConfig[K] {
+    return this.configService.get(key);
   }
 }

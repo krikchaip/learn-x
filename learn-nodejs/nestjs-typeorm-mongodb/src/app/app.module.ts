@@ -25,7 +25,7 @@ import { CatchEverythingFilter } from 'src/filter';
     // global modules
     CommonModule,
     DatabaseModule.forRoot({ entities: [Cat] }), // dynamically registered
-    ConfigModule.forRoot({ folder: './config' }), // dynamically registered
+    ConfigModule.forRoot({ folder: './src/config' }), // dynamically registered
 
     CatsModule,
   ],

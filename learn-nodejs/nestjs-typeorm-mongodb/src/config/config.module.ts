@@ -1,9 +1,13 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigService } from './config.service';
 
+export interface ConfigModuleConfig {
+  folder?: string;
+}
+
 @Module({})
 export class ConfigModule {
-  static forRoot(): DynamicModule {
+  static forRoot(options?: ConfigModuleConfig): DynamicModule {
     return {
       // makes this dynamic module 'global', similar to applying `@Global`
       global: true,
@@ -12,7 +16,10 @@ export class ConfigModule {
       module: ConfigModule,
 
       // extends (not overrides) the 'providers' option specified in `@Module`
-      providers: [ConfigService],
+      providers: [
+        ConfigService,
+        { provide: 'CONFIG_OPTIONS', useValue: options },
+      ],
 
       // extends (not overrides) the 'exports' option specified in `@Module`
       exports: [ConfigService],
