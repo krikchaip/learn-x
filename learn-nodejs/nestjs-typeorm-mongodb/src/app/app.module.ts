@@ -5,6 +5,7 @@ import {
   type NestModule,
 } from '@nestjs/common';
 import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { DatabaseModule } from 'src/database';
 import { CommonModule } from 'src/common';
@@ -31,6 +32,16 @@ import { CatchEverythingFilter } from 'src/filter';
 
     // dynamic modules can also be configured asynchronously using a factory class to provide options.
     ConfigModule.forRootAsync({ useClass: DefaultOptionsFactory }),
+
+    // typeorm integration (mongodb)
+    TypeOrmModule.forRoot({
+      type: 'mongodb',
+      host: 'localhost',
+      port: 27017,
+      username: 'admin',
+      password: 'password',
+      entities: ['src/**/entities/*.ts'],
+    }),
 
     CatsModule,
   ],
