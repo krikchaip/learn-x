@@ -14,10 +14,11 @@ import { CatsModule, Cat } from 'src/cats';
 import { HeaderMiddleware, LoggerMiddleware } from 'src/middleware';
 import { AuthGuard } from 'src/guard';
 import { TimeoutInterceptor } from 'src/interceptor';
+import { UsersModule } from 'src/users';
+import { CatchEverythingFilter } from 'src/filter';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CatchEverythingFilter } from 'src/filter';
 
 @Module({
   imports: [
@@ -44,6 +45,7 @@ import { CatchEverythingFilter } from 'src/filter';
     }),
 
     CatsModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [
