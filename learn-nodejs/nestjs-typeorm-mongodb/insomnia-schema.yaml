@@ -10,8 +10,8 @@ collection:
     meta:
       id: fld_be8e9fb5aaca4d42b8c14f2b6aeece89
       created: 1760643228848
-      modified: 1760643228848
-      sortKey: -1760643228848
+      modified: 1761917615370
+      sortKey: -1760646623148.5
       description: ""
     children:
       - url: http://localhost:3000/cats
@@ -19,7 +19,7 @@ collection:
         meta:
           id: req_912edae9897a476eadb14b4642a3f126
           created: 1760643236538
-          modified: 1761297397130
+          modified: 1761921295637
           isPrivate: false
           description: ""
           sortKey: -1760643236538
@@ -115,7 +115,7 @@ collection:
         meta:
           id: req_75dc7cb36e3b4c9da9915985f9f24538
           created: 1760643545747
-          modified: 1761297533552
+          modified: 1761921308185
           isPrivate: false
           description: ""
           sortKey: -1760643236388
@@ -345,7 +345,7 @@ collection:
         meta:
           id: req_47d6bf5bc9ac4dd68feacdde818819b6
           created: 1761577483234
-          modified: 1761577834489
+          modified: 1761594415149
           isPrivate: false
           description: ""
           sortKey: -1760654979951.5
@@ -355,7 +355,130 @@ collection:
             name: key
             value: SUPER_SECRET
             description: ""
-            disabled: false
+            disabled: true
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: users
+    meta:
+      id: fld_c9d2ab9d3f9e4bceb9f335cc7e7c15f5
+      created: 1761916186067
+      modified: 1761916223717
+      sortKey: -1760645491715
+      description: ""
+    children:
+      - url: http://localhost:3000/users
+        name: create
+        meta:
+          id: req_ee9ba65a390d4c759b344d8a961fbf01
+          created: 1761917618969
+          modified: 1762111698668
+          isPrivate: false
+          description: ""
+          sortKey: -1761917618969
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"email": "test@mail.com",
+            	"firstName": "eiei",
+            	"age": 0
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/users
+        name: findAll
+        meta:
+          id: req_5fada1643bec45d1a467665e06038287
+          created: 1761917685344
+          modified: 1761917702250
+          isPrivate: false
+          description: ""
+          sortKey: -1761917618869
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/users/1
+        name: findOne
+        meta:
+          id: req_552a6cc904024faaba2dbcc11b965554
+          created: 1761917720443
+          modified: 1761917740150
+          isPrivate: false
+          description: ""
+          sortKey: -1761917618769
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/users/1
+        name: update
+        meta:
+          id: req_859a4988602641998ce0cb0d2c09209d
+          created: 1761918075826
+          modified: 1761918092010
+          isPrivate: false
+          description: ""
+          sortKey: -1761917618669
+        method: PATCH
+        headers:
+          - name: User-Agent
+            value: insomnia/11.6.2
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: http://localhost:3000/users/1
+        name: remove
+        meta:
+          id: req_55284a7044944f3b9fff26841b8f0063
+          created: 1761918108673
+          modified: 1761918120111
+          isPrivate: false
+          description: ""
+          sortKey: -1761303915030.5
+        method: DELETE
         headers:
           - name: User-Agent
             value: insomnia/11.6.2
