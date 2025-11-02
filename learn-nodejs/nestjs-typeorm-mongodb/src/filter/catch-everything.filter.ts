@@ -30,7 +30,14 @@ export class CatchEverythingFilter implements ExceptionFilter {
         ? exception.getStatus()
         : HttpStatus.INTERNAL_SERVER_ERROR;
 
-    const reason = exception instanceof Error ? exception.message : undefined;
+    let reason: string | object | undefined;
+
+    if (exception instanceof HttpException) {
+      const body: any = exception.getResponse();
+      reason = typeof body === 'string' ? body : body?.message; // eslint-disable-line
+    } else if (exception instanceof Error) {
+      reason = exception.message;
+    }
 
     const body = {
       type: 'CATCH_ALL',
