@@ -41,6 +41,8 @@ import { AppService } from './app.service';
       port: 27017,
       username: 'admin',
       password: 'password',
+      database: 'nestjs-typeorm-mongodb',
+      authSource: 'admin',
       entities: ['src/**/entities/*.ts'],
     }),
 
