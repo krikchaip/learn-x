@@ -40,7 +40,13 @@ export class UsersService {
     return user;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  async remove(id: string) {
+    const user = await this.findOne(id);
+
+    if (!user) return;
+
+    await this.usersRepository.remove(user);
+
+    return user;
   }
 }
