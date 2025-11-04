@@ -22,7 +22,7 @@ export class CreateUserDto {
   lastName: string;
 
   @IsNumber()
-  @IsOptional()
   @Min(0)
-  age?: number;
+  @IsOptional()
+  age: number;
 }
