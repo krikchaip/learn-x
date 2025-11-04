@@ -1,14 +1,14 @@
 type: collection.insomnia.rest/5.0
 name: nestjs-typeorm-mongodb
 meta:
-  id: wrk_45e33f429b2c49e699129c4928ca2778
-  created: 1761297860947
-  modified: 1761297860947
+  id: wrk_6fbb8c89c3d24138a19e3f6c07fb0e2e
+  created: 1762195897972
+  modified: 1762195897972
   description: ""
 collection:
   - name: cats
     meta:
-      id: fld_be8e9fb5aaca4d42b8c14f2b6aeece89
+      id: fld_82e4a2eecd0d4b298ea601b38afca714
       created: 1760643228848
       modified: 1761917615370
       sortKey: -1760646623148.5
@@ -17,7 +17,7 @@ collection:
       - url: http://localhost:3000/cats
         name: create
         meta:
-          id: req_912edae9897a476eadb14b4642a3f126
+          id: req_a99e3a3a32c14d49ba29758c32b4f2cb
           created: 1760643236538
           modified: 1761921295637
           isPrivate: false
@@ -48,7 +48,7 @@ collection:
       - url: http://localhost:3000/cats
         name: findAll
         meta:
-          id: req_678d385e7efa4a22bcf1472a79acee68
+          id: req_4fb2251ec0b146018cb0112b18747042
           created: 1760643337721
           modified: 1761319637385
           isPrivate: false
@@ -79,7 +79,7 @@ collection:
       - url: http://localhost:3000/cats/:id
         name: findOne
         meta:
-          id: req_8ef49f8711804f679df75573cd6774e9
+          id: req_4212bf4e3599412fafe5af7af4869da7
           created: 1760643358691
           modified: 1761344523033
           isPrivate: false
@@ -113,7 +113,7 @@ collection:
       - url: http://localhost:3000/cats/:id
         name: update
         meta:
-          id: req_75dc7cb36e3b4c9da9915985f9f24538
+          id: req_f9bb8d538be54fc790cbfeb517866363
           created: 1760643545747
           modified: 1761921308185
           isPrivate: false
@@ -153,7 +153,7 @@ collection:
       - url: http://localhost:3000/cats/:id
         name: remove
         meta:
-          id: req_25b573b1da1e498681b2d8a491e3d73a
+          id: req_1464771c8b1f4c798974eeabbb14ce84
           created: 1760643586887
           modified: 1761505586482
           isPrivate: false
@@ -171,13 +171,10 @@ collection:
         headers:
           - name: Content-Type
             value: application/json
-            id: pair_94a7a51acb4944a3bedd0fd9ea1a13d7
           - name: User-Agent
             value: insomnia/11.6.1
-            id: pair_aa3b57824b294068b791509e6b302e10
           - name: X-Role
             value: admin
-            id: pair_167c1ac463094ec3992af0c5a314bd58
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -192,7 +189,7 @@ collection:
       - url: http://localhost:3000/cats/age
         name: ageUp
         meta:
-          id: req_78cda00f8f49401e902ae80262a0560b
+          id: req_73e7c47b0cb3445f9cd1d424a7207d1e
           created: 1761500134413
           modified: 1761504319069
           isPrivate: false
@@ -202,12 +199,8 @@ collection:
         headers:
           - name: User-Agent
             value: insomnia/11.6.2
-            id: pair_00d65e8868434511a94ec3c46fe9bd83
-          - id: pair_2c0ffb7fa1c846509908ad07353a078c
-            name: X-Cat-Id
+          - name: X-Cat-Id
             value: "1"
-            description: ""
-            disabled: false
         settings:
           renderRequestBody: true
           encodeUrl: true
@@ -218,7 +211,7 @@ collection:
           rebuildPath: true
   - name: app
     meta:
-      id: fld_502e353968f2471fb9b3f9f7fd004871
+      id: fld_ea455c3c466644648e3be4f4e82822b8
       created: 1760647754582
       modified: 1760647792030
       sortKey: -1760647754582
@@ -227,7 +220,7 @@ collection:
       - url: http://localhost:3000
         name: getHello
         meta:
-          id: req_8c99a245ee5644eb8b350a6be1d5f8ee
+          id: req_a00701e0c3c148ad95ec696256ec0f7b
           created: 1760690211392
           modified: 1760690233278
           isPrivate: false
@@ -248,7 +241,7 @@ collection:
       - url: http://localhost:3000/wildcard/forbidden
         name: wildcard
         meta:
-          id: req_315aa9df5664409998ea8eaab47468fa
+          id: req_d822f0c39c9640b793725be7909bb6da
           created: 1760690259603
           modified: 1761500186978
           isPrivate: false
@@ -269,7 +262,7 @@ collection:
       - url: http://localhost:3000/docs
         name: getDocs
         meta:
-          id: req_90091e5248a94b6c99bd926f3f11bd27
+          id: req_9a4b72e10a8d4e9ba16a9cf31dad0099
           created: 1760690287253
           modified: 1760690309665
           isPrivate: false
@@ -295,7 +288,7 @@ collection:
       - url: http://localhost:3000/error
         name: error
         meta:
-          id: req_c31c4beab2154266a8b15845137b4f55
+          id: req_0f77ae9ee82b4816bfb10c841d6d5672
           created: 1761083056263
           modified: 1761083083540
           isPrivate: false
@@ -316,7 +309,7 @@ collection:
       - url: http://localhost:3000/slow
         name: slow
         meta:
-          id: req_174f92311d0747f4b6f377ed9ea956ae
+          id: req_f27d651b32d245c99be4da8cdd14de29
           created: 1761323930323
           modified: 1761500152611
           isPrivate: false
@@ -324,11 +317,10 @@ collection:
           sortKey: -1760654980051.5
         method: GET
         parameters:
-          - id: pair_cf5e1df3c5b941f4bab68f824ac3ee18
-            name: delay
+          - name: delay
             value: "1000"
-            description: ""
             disabled: false
+            id: pair_cf5e1df3c5b941f4bab68f824ac3ee18
         headers:
           - name: User-Agent
             value: insomnia/11.6.1
@@ -343,7 +335,7 @@ collection:
       - url: http://localhost:3000/config
         name: getConfig
         meta:
-          id: req_47d6bf5bc9ac4dd68feacdde818819b6
+          id: req_5bc12d3a0f31423fa79f0126701ba6cf
           created: 1761577483234
           modified: 1761594415149
           isPrivate: false
@@ -351,11 +343,10 @@ collection:
           sortKey: -1760654979951.5
         method: GET
         parameters:
-          - id: pair_68670470dff346dca91389ee1d9ade23
-            name: key
+          - name: key
             value: SUPER_SECRET
-            description: ""
             disabled: true
+            id: pair_68670470dff346dca91389ee1d9ade23
         headers:
           - name: User-Agent
             value: insomnia/11.6.2
@@ -369,7 +360,7 @@ collection:
           rebuildPath: true
   - name: users
     meta:
-      id: fld_c9d2ab9d3f9e4bceb9f335cc7e7c15f5
+      id: fld_6b1c0125a2064e688038175573efa12e
       created: 1761916186067
       modified: 1761916223717
       sortKey: -1760645491715
@@ -378,9 +369,9 @@ collection:
       - url: http://localhost:3000/users
         name: create
         meta:
-          id: req_ee9ba65a390d4c759b344d8a961fbf01
+          id: req_7f789d3528ac4c9b81fe201ff7833a92
           created: 1761917618969
-          modified: 1762111698668
+          modified: 1762230535244
           isPrivate: false
           description: ""
           sortKey: -1761917618969
@@ -389,9 +380,8 @@ collection:
           mimeType: application/json
           text: |-
             {
-            	"email": "test@mail.com",
-            	"firstName": "eiei",
-            	"age": 0
+            	"email": "wow@eiei.com",
+            	"wow": "eiei"
             }
         headers:
           - name: Content-Type
@@ -409,7 +399,7 @@ collection:
       - url: http://localhost:3000/users
         name: findAll
         meta:
-          id: req_5fada1643bec45d1a467665e06038287
+          id: req_1d3b93d8e32a45f180b78cafb2efbea7
           created: 1761917685344
           modified: 1761917702250
           isPrivate: false
@@ -427,12 +417,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3000/users/1
+      - url: http://localhost:3000/users/69091dd171afbc49d29c7ac6
         name: findOne
         meta:
-          id: req_552a6cc904024faaba2dbcc11b965554
+          id: req_48d2b8b0e2514180b6d612f89fa2e0b9
           created: 1761917720443
-          modified: 1761917740150
+          modified: 1762227664799
           isPrivate: false
           description: ""
           sortKey: -1761917618769
@@ -448,17 +438,25 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3000/users/1
+      - url: http://localhost:3000/users/690981082897d22a74b2c162
         name: update
         meta:
-          id: req_859a4988602641998ce0cb0d2c09209d
+          id: req_c95b991391564bd9b93a4fabc53ccfca
           created: 1761918075826
-          modified: 1761918092010
+          modified: 1762254374660
           isPrivate: false
           description: ""
           sortKey: -1761917618669
         method: PATCH
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"isActive": true
+            }
         headers:
+          - name: Content-Type
+            value: application/json
           - name: User-Agent
             value: insomnia/11.6.2
         settings:
@@ -469,12 +467,12 @@ collection:
             send: true
             store: true
           rebuildPath: true
-      - url: http://localhost:3000/users/1
+      - url: http://localhost:3000/users/69091dd171afbc49d29c7ac6
         name: remove
         meta:
-          id: req_55284a7044944f3b9fff26841b8f0063
+          id: req_4bd5f537e5f4433cb4672999cbc8e155
           created: 1761918108673
-          modified: 1761918120111
+          modified: 1762287031964
           isPrivate: false
           description: ""
           sortKey: -1761303915030.5
@@ -493,9 +491,9 @@ collection:
 cookieJar:
   name: Default Jar
   meta:
-    id: jar_e4cef7789d14420a97af608cbac44660
+    id: jar_feb617b0b4b0491393e81d11a0d8217d
     created: 1760621217204
-    modified: 1761577545921
+    modified: 1762195919084
   cookies:
     - key: nestjs-controller
       value: AppController
@@ -503,12 +501,12 @@ cookieJar:
       path: /
       hostOnly: true
       creation: 2025-10-16T13:27:13.517Z
-      lastAccessed: 2025-10-27T15:05:45.921Z
-      id: db2b415e-908c-41a8-a753-5de9fe3c3707
+      lastAccessed: 2025-11-03T18:51:59.084Z
+      id: 66fd15ee-84a2-4f79-8ff7-061f717375b2
 environments:
   name: Base Environment
   meta:
-    id: env_b742e7758eec48af8468f725d73a95b9
+    id: env_6203ea91f21946b0980102109e47d976
     created: 1760621217202
     modified: 1760621217202
     isPrivate: false
