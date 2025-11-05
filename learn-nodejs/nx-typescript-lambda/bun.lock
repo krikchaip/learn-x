@@ -25,6 +25,13 @@
         "vitest": "^3.0.0",
       },
     },
+    "libs/util": {
+      "name": "@nx-typescript-lambda/util",
+      "version": "0.0.1",
+      "dependencies": {
+        "tslib": "^2.3.0",
+      },
+    },
     "packages/animal": {
       "name": "@nx-typescript-lambda/animal",
       "version": "0.0.1",
@@ -333,6 +340,8 @@
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@0.2.4", "", { "dependencies": { "@emnapi/core": "^1.1.0", "@emnapi/runtime": "^1.1.0", "@tybys/wasm-util": "^0.9.0" } }, "sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ=="],
 
     "@nx-typescript-lambda/animal": ["@nx-typescript-lambda/animal@workspace:packages/animal"],
+
+    "@nx-typescript-lambda/util": ["@nx-typescript-lambda/util@workspace:libs/util"],
 
     "@nx-typescript-lambda/zoo": ["@nx-typescript-lambda/zoo@workspace:packages/zoo"],
 
