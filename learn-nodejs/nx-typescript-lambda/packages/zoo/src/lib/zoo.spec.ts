@@ -2,6 +2,6 @@ import { zoo } from './zoo.js';
 
 describe('zoo', () => {
   it('should work', () => {
-    expect(zoo()).toEqual('zoo');
+    expect(zoo()).toMatch(/\[ZOO\] (\w+) says (\w+)/);
   });
 });
