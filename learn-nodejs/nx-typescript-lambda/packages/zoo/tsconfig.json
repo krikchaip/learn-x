@@ -4,6 +4,9 @@
   "include": [],
   "references": [
     {
+      "path": "../animal"
+    },
+    {
       "path": "./tsconfig.lib.json"
     },
     {
