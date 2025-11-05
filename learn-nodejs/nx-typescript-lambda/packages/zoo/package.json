@@ -16,6 +16,7 @@
     }
   },
   "dependencies": {
-    "@nx-typescript-lambda/animal": "workspace:*"
+    "@nx-typescript-lambda/animal": "workspace:*",
+    "@nx-typescript-lambda/util": "workspace:*"
   }
 }

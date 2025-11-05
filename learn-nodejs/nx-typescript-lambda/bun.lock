@@ -35,12 +35,16 @@
     "packages/animal": {
       "name": "@nx-typescript-lambda/animal",
       "version": "0.0.1",
+      "dependencies": {
+        "@nx-typescript-lambda/util": "workspace:*",
+      },
     },
     "packages/zoo": {
       "name": "@nx-typescript-lambda/zoo",
       "version": "0.0.1",
       "dependencies": {
         "@nx-typescript-lambda/animal": "workspace:*",
+        "@nx-typescript-lambda/util": "workspace:*",
       },
     },
   },
