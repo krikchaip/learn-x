@@ -32,6 +32,9 @@
     "packages/zoo": {
       "name": "@nx-typescript-lambda/zoo",
       "version": "0.0.1",
+      "dependencies": {
+        "@nx-typescript-lambda/animal": "workspace:*",
+      },
     },
   },
   "trustedDependencies": [

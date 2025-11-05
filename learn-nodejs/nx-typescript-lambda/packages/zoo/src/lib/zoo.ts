@@ -1,3 +1,6 @@
+import { getRandomAnimal } from '@nx-typescript-lambda/animal';
+
 export function zoo(): string {
-  return 'zoo';
+  const animal = getRandomAnimal();
+  return `${animal.name} says ${animal.sound}`;
 }
