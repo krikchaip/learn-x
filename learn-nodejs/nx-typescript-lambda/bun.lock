@@ -29,6 +29,10 @@
       "name": "@nx-typescript-lambda/animal",
       "version": "0.0.1",
     },
+    "packages/zoo": {
+      "name": "@nx-typescript-lambda/zoo",
+      "version": "0.0.1",
+    },
   },
   "trustedDependencies": [
     "nx",
@@ -326,6 +330,8 @@
     "@napi-rs/wasm-runtime": ["@napi-rs/wasm-runtime@0.2.4", "", { "dependencies": { "@emnapi/core": "^1.1.0", "@emnapi/runtime": "^1.1.0", "@tybys/wasm-util": "^0.9.0" } }, "sha512-9zESzOO5aDByvhIAsOy9TbpZ0Ur2AJbUI7UT73kcUTS2mxAMHOBaa1st/jAymNoCtvrit99kkzT1FZuXVcgfIQ=="],
 
     "@nx-typescript-lambda/animal": ["@nx-typescript-lambda/animal@workspace:packages/animal"],
+
+    "@nx-typescript-lambda/zoo": ["@nx-typescript-lambda/zoo@workspace:packages/zoo"],
 
     "@nx/devkit": ["@nx/devkit@22.0.2", "", { "dependencies": { "@zkochan/js-yaml": "0.0.7", "ejs": "^3.1.7", "enquirer": "~2.3.6", "minimatch": "9.0.3", "semver": "^7.6.3", "tslib": "^2.3.0", "yargs-parser": "21.1.1" }, "peerDependencies": { "nx": ">= 21 <= 23 || ^22.0.0-0" } }, "sha512-/tD7z8Q3CPPKtH/LTZGaihzJio5Ve3yFk9LWpUa8DmFHdEg1rFeI9rvSM8FeuEsGp9yGosWH6/KpZCwHv2fhVA=="],
 
