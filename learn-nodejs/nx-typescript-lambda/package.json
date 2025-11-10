@@ -6,8 +6,15 @@
     "packages/*",
     "libs/*"
   ],
-  "scripts": {},
-  "dependencies": {},
+  "nx": {
+    "name": "source",
+    "targets": {
+      "sls": {
+        "executor": "@ns3/nx-serverless:sls",
+        "cache": false
+      }
+    }
+  },
   "devDependencies": {
     "@ns3/nx-serverless": "*",
     "@nx/jest": "20.8.2",
