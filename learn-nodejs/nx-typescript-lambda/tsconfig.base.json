@@ -8,13 +8,14 @@
     "lib": ["es2022"],
     "module": "nodenext",
     "moduleResolution": "nodenext",
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
-    "strict": true,
     "target": "es2022",
     "customConditions": ["@nx-typescript-lambda/source"]
   }

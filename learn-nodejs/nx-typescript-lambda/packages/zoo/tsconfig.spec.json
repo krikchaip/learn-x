@@ -9,8 +9,12 @@
       "node",
       "vitest"
     ],
-    "forceConsistentCasingInFileNames": true
   },
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
   "include": [
     "vite.config.ts",
     "vite.config.mts",
@@ -25,10 +29,5 @@
     "src/**/*.test.jsx",
     "src/**/*.spec.jsx",
     "src/**/*.d.ts"
-  ],
-  "references": [
-    {
-      "path": "./tsconfig.lib.json"
-    }
   ]
 }

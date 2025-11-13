@@ -1,0 +1,6 @@
+export const lambda = async (event: unknown, context: unknown) => {
+  return {
+    statusCode: 200,
+    body: JSON.stringify({ foo: 'bar', event, context }),
+  };
+};

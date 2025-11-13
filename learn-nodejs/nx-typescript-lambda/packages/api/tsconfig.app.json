@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "src",
+    "outDir": "dist",
+    "tsBuildInfoFile": "dist/tsconfig.app.tsbuildinfo",
+    "emitDeclarationOnly": false,
+    "types": ["node"],
+    "lib": ["es2023"],
+    "target": "es2022",
+  },
+  "references": [],
+  "include": ["**/*.ts"],
+  "exclude": ["**/*.spec.ts"],
+}

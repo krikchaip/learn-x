@@ -1,0 +1,63 @@
+{
+  "name": "@nx-typescript-lambda/api",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "api",
+    "projectType": "application",
+    "sourceRoot": "packages/api/src",
+    "tags": [],
+    "targets": {
+      "serve": {
+        "executor": "@ns3/nx-serverless:sls",
+        "options": {
+          "command": "offline"
+        }
+      },
+      "package": {
+        "executor": "@ns3/nx-serverless:sls",
+        "outputs": [
+          "{projectRoot}/.serverless"
+        ],
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "command": "package"
+        }
+      },
+      "deploy": {
+        "executor": "@ns3/nx-serverless:sls",
+        "outputs": [
+          "{projectRoot}/.serverless"
+        ],
+        "dependsOn": [
+          "package"
+        ],
+        "options": {
+          "command": "deploy",
+          "package": ".serverless"
+        }
+      },
+      "remove": {
+        "executor": "@ns3/nx-serverless:sls",
+        "options": {
+          "command": "remove"
+        }
+      },
+      "sls": {
+        "executor": "@ns3/nx-serverless:sls",
+        "options": {}
+      },
+      "lint": {
+        "executor": "@nx/eslint:lint",
+        "options": {
+          "lintFilePatterns": [
+            "packages/api/src/**/*.{ts,tsx,js,jsx}"
+          ]
+        }
+      }
+    }
+  },
+  "dependencies": {}
+}
