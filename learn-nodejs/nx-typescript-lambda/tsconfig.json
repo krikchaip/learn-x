@@ -11,6 +11,9 @@
     },
     {
       "path": "./libs/util"
+    },
+    {
+      "path": "./packages/api"
     }
   ]
 }
