@@ -1,0 +1,54 @@
+type: collection.insomnia.rest/5.0
+name: nx-typescript-lambda
+meta:
+  id: wrk_9eee17da79604b13963806f3bfef33ac
+  created: 1763448012952
+  modified: 1763448012952
+  description: ""
+collection:
+  - url: "{{ _.origin }}/customer"
+    name: customer-create
+    meta:
+      id: req_47ce1b84598a4719817e845fd8b3dc57
+      created: 1763448052720
+      modified: 1763494084678
+      isPrivate: false
+      description: ""
+      sortKey: -1763448052720
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"Name": "Winner",
+        	"Email": "winner@mail.com",
+        	"Age": 30
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f9da64efc158cbf9fa72269e319578aaf783c0be
+    created: 1763448012958
+    modified: 1763448012958
+environments:
+  name: Base Environment
+  meta:
+    id: env_f9da64efc158cbf9fa72269e319578aaf783c0be
+    created: 1763448012956
+    modified: 1763448040564
+    isPrivate: false
+  data:
+    origin: http://localhost:3333
