@@ -53,9 +53,9 @@ resources:
             KeyType: RANGE # sort key
 
 functions:
-  foo:
-    handler: src/handlers/foo.lambda
+  customer-create:
+    handler: src/handlers/customer/create.lambda
     events:
       - http:
-          method: GET
-          path: /foo
+          method: POST
+          path: /customer
