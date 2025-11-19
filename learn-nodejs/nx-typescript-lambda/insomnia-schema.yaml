@@ -37,6 +37,32 @@ collection:
         send: true
         store: true
       rebuildPath: true
+  - url: "{{ _.origin }}/customer"
+    name: customer-retrieve
+    meta:
+      id: req_b87da109dc0741df8b1554dd8be66c65
+      created: 1763578716022
+      modified: 1763578722888
+      isPrivate: false
+      description: ""
+      sortKey: -1762682835844.5
+    method: GET
+    body:
+      mimeType: application/json
+      text: ""
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.0.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
 cookieJar:
   name: Default Jar
   meta:

@@ -40,6 +40,7 @@ provider:
         - Effect: Allow
           Action:
             - dynamodb:PutItem
+            - dynamodb:Scan
           Resource:
             - arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:service}-customer-${sls:stage}
 
@@ -67,4 +68,10 @@ functions:
     events:
       - http:
           method: POST
+          path: /customer
+  customer-retrieve:
+    handler: src/handlers/customer/retrieve.lambda
+    events:
+      - http:
+          method: GET
           path: /customer

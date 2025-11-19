@@ -7,7 +7,7 @@ import {
 } from 'aws-lambda';
 import { randomBytes } from 'node:crypto';
 
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient());
 
