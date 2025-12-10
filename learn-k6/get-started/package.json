@@ -1,0 +1,11 @@
+{
+  "name": "@krikchaip/k6-get-started",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/k6": "^1.4.0"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
